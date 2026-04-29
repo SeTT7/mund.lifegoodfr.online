@@ -266,6 +266,30 @@ function goToCheckout() {
   .brand, .step-eyebrow, .step-indicator, .field-label, .cta-label, .tracks-eyebrow,
   .hero-eyebrow, .vquiz-brand, .vquiz-eyebrow, .vquiz-field-label, .now-eyebrow,
   .mini-eyebrow { text-shadow: 0 0 8px rgba(245,220,145,0.85), 0 0 20px rgba(240,208,128,0.4); }
+
+  /* Site footer (Infosetads disclaimer + legal) */
+  .site-footer {
+    margin: 60px auto 0;
+    padding: 40px 24px 36px;
+    border-top: 1px solid rgba(201,168,76,0.2);
+    text-align: center;
+    color: #B0A088;
+    font-size: 12px; line-height: 1.7;
+    max-width: 720px;
+  }
+  .site-footer .disclaimer {
+    font-size: 12px; color: #B0A088; line-height: 1.7;
+    max-width: 620px; margin: 0 auto 22px;
+    text-align: left;
+  }
+  .site-footer .disclaimer strong { color: #EDDDC0; }
+  .site-footer p { margin: 8px 0; color: #B0A088; }
+  .site-footer a { color: var(--gold); text-decoration: none; }
+  .site-footer a:hover { color: var(--gold-light); text-decoration: underline; }
+  @media (max-width: 600px) {
+    .site-footer { padding: 32px 18px 28px; }
+    .site-footer .disclaimer { font-size: 11.5px; }
+  }
 </style>
 </head>
 <body>
