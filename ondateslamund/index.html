@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<title>Tinnitus & Memory — Personal Assessment</title>
+
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: dark;
+    --gold: #F8E5B0;
+    --gold-light: #FFF5E0;
+    --gold-dark: #8B6914;
+    --green: #2BAC22;
+    --green-dark: #1F7D18;
+    --green-light: #37D12C;
+    --red: #C0392B;
+    --red-bright: #E74C3C;
+    --dark: #0A0705;
+    --dark2: #130E08;
+    --cream: #F5F0E8;
+    --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { min-height: 100%; }
+  body {
+    background: radial-gradient(ellipse at 50% 0%, #2A1908 0%, #160E08 60%);
+    color: var(--cream); font-family: 'Lora', Georgia, serif;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 1; opacity: 0.4;
+  }
+  .rays {
+    position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+    width: 100%; max-width: 900px; height: 420px;
+    pointer-events: none; opacity: 0.06; z-index: 1;
+  }
+
+  .shell {
+    position: relative; z-index: 2;
+    max-width: 640px; margin: 0 auto; padding: 40px 20px 60px;
+    min-height: 100vh; display: flex; flex-direction: column;
+  }
+
+  .brand {
+    text-align: center; font-family: 'Cinzel', serif;
+    font-size: 12px; letter-spacing: 5px; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 30px;
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    text-shadow: 0 0 8px rgba(245,220,145,0.85), 0 0 20px rgba(240,208,128,0.4);
+  }
+  .brand::before, .brand::after {
+    content: ''; flex: 0 0 40px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-dark), transparent);
+  }
+
+  .progress {
+    width: 100%; max-width: 380px; margin: 0 auto 24px;
+    height: 4px; background: rgba(201,168,76,0.15); border-radius: 2px; overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%; background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+    width: 0%; transition: width 0.6s ease; box-shadow: 0 0 12px rgba(240,208,128,0.5);
+  }
+  .step-indicator {
+    text-align: center; font-family: 'Cinzel', serif; font-size: 11px;
+    letter-spacing: 3px; color: #E8DBC4; text-transform: uppercase; margin-bottom: 28px;
+    text-shadow: 0 0 8px rgba(245,220,145,0.85), 0 0 20px rgba(240,208,128,0.4);
+  }
+
+  .step { display: none; animation: fadeUp 0.6s ease forwards; }
+  .step.active { display: block; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+  .step-eyebrow {
+    font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--gold); text-align: center; margin-bottom: 18px;
+    text-shadow: 0 0 8px rgba(245,220,145,0.85), 0 0 20px rgba(240,208,128,0.4);
+  }
+  .step-title {
+    font-family: 'Cinzel', serif; font-size: clamp(22px, 4vw, 34px); font-weight: 900;
+    line-height: 1.25; color: var(--white); text-align: center; margin-bottom: 14px;
+  }
+  .step-title .gold { color: var(--gold-light); }
+  .step-sub {
+    font-size: clamp(14px, 1.9vw, 16px); color: #EDDDC0; text-align: center;
+    line-height: 1.7; font-style: italic; max-width: 520px; margin: 0 auto 32px;
+  }
+
+  /* OPTION CARDS */
+  .options { max-width: 520px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .option {
+    width: 100%;
+    display: flex; align-items: center; gap: 14px;
+    padding: 18px 20px;
+    background: linear-gradient(135deg, rgba(201,168,76,0.05) 0%, rgba(201,168,76,0.02) 100%);
+    border: 1.5px solid rgba(201,168,76,0.3);
+    border-radius: 8px;
+    color: var(--cream); font-family: 'Lora', serif; font-size: 15.5px;
+    text-align: left; cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .option:hover {
+    border-color: var(--gold-light);
+    background: linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(201,168,76,0.05) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4), 0 0 0 1px rgba(240,208,128,0.15);
+  }
+  .option .marker {
+    width: 22px; height: 22px; border-radius: 50%;
+    border: 2px solid rgba(201,168,76,0.5);
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s ease;
+  }
+  .option .marker::after {
+    content: ''; width: 10px; height: 10px; border-radius: 50%;
+    background: var(--gold-light);
+    transform: scale(0);
+    transition: transform 0.2s ease;
+    box-shadow: 0 0 12px rgba(240,208,128,0.7);
+  }
+  .option.selected {
+    border-color: var(--gold-light);
+    background: linear-gradient(135deg, rgba(201,168,76,0.18) 0%, rgba(201,168,76,0.08) 100%);
+    box-shadow: 0 0 24px rgba(240,208,128,0.2), 0 8px 24px rgba(0,0,0,0.5);
+  }
+  .option.selected .marker { border-color: var(--gold-light); }
+  .option.selected .marker::after { transform: scale(1); }
+
+  /* CTA */
+  .cta-btn {
+    display: block; margin: 30px auto 0; width: 100%; max-width: 460px;
+    background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+    color: white;
+    font-family: 'Cinzel', serif; font-size: clamp(15px, 2.4vw, 19px); font-weight: 700;
+    padding: 20px 32px; border-radius: 6px; text-decoration: none; letter-spacing: 1px;
+    text-align: center; line-height: 1.35;
+    box-shadow: 0 8px 30px rgba(43,172,34,0.45), 0 0 0 1px rgba(201,168,76,0.3);
+    transition: all 0.2s; position: relative; overflow: hidden; cursor: pointer;
+    border: 2px solid var(--green-light);
+  }
+  .cta-btn::before {
+    content: ''; position: absolute; top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+    animation: shimmer 2.5s infinite;
+  }
+  @keyframes shimmer { 0% { left: -100%; } 100% { left: 100%; } }
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(43,172,34,0.7), 0 0 0 1px rgba(201,168,76,0.5);
+  }
+  .cta-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+  .back-link {
+    display: block; text-align: center; margin-top: 20px;
+    color: #E8DBC4; font-size: 13px; text-decoration: none;
+    letter-spacing: 1px; cursor: pointer; background: none; border: none;
+    font-family: 'Lora', serif; font-style: italic;
+  }
+  .back-link:hover { color: var(--gold); }
+
+  /* LOADING */
+  .loading-wrap {
+    display: none; text-align: center; padding: 40px 20px;
+    flex: 1; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .loading-wrap.active { display: flex; animation: fadeUp 0.6s ease forwards; }
+  .halo-loader { position: relative; width: 140px; height: 140px; margin-bottom: 40px; }
+  .halo-ring {
+    position: absolute; inset: 0; border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: var(--gold-light);
+    border-right-color: var(--gold);
+    animation: spin 1.6s linear infinite;
+  }
+  .halo-ring:nth-child(2) {
+    inset: 12px;
+    border-top-color: var(--gold);
+    border-right-color: var(--gold-dark);
+    animation: spin 2.2s linear infinite reverse;
+  }
+  .halo-ring:nth-child(3) {
+    inset: 26px;
+    border-top-color: var(--gold-light);
+    border-right-color: transparent;
+    border-bottom-color: var(--gold);
+    animation: spin 1.2s linear infinite;
+  }
+  .halo-center {
+    position: absolute; inset: 40px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(240,208,128,0.6) 0%, rgba(201,168,76,0.15) 60%, transparent 100%);
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  .halo-center::before {
+    content: '✦';
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    color: var(--gold-light); font-size: 32px;
+    text-shadow: 0 0 20px rgba(240,208,128,0.8);
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes pulse-glow { 0%, 100% { opacity: 0.7; transform: scale(1); } 50% { opacity: 1; transform: scale(1.08); } }
+
+  .loading-title {
+    font-family: 'Cinzel', serif; font-size: clamp(22px, 4vw, 32px); font-weight: 900;
+    color: var(--white); margin-bottom: 12px; letter-spacing: 1px;
+  }
+  .loading-title .gold { color: var(--gold-light); }
+  .loading-sub {
+    font-size: clamp(15px, 2vw, 17px); color: #EDDDC0; font-style: italic;
+    line-height: 1.7; max-width: 460px; margin-bottom: 28px;
+  }
+  .loading-steps { max-width: 420px; width: 100%; text-align: left; margin: 0 auto; }
+  .loading-steps li {
+    list-style: none; padding: 10px 0; font-size: 15px; color: #8E7C66;
+    display: flex; align-items: center; gap: 12px;
+    border-bottom: 1px dashed rgba(201,168,76,0.12);
+    transition: color 0.4s ease;
+  }
+  .loading-steps li:last-child { border-bottom: none; }
+  .loading-steps li .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.3);
+    flex-shrink: 0; transition: all 0.4s ease;
+  }
+  .loading-steps li.done { color: var(--cream); }
+  .loading-steps li.done .dot {
+    background: var(--gold-light); border-color: var(--gold-light);
+    box-shadow: 0 0 10px rgba(240,208,128,0.6);
+  }
+  .loading-steps li.active { color: var(--white); }
+  .loading-steps li.active .dot {
+    border-color: var(--gold-light);
+    animation: pulse-dot 1s ease-in-out infinite;
+  }
+  @keyframes pulse-dot { 0%, 100% { box-shadow: 0 0 0 0 rgba(240,208,128,0.6); } 50% { box-shadow: 0 0 0 6px rgba(240,208,128,0); } }
+
+  /* RESULT */
+  .result-wrap { display: none; padding: 20px 0 40px; }
+  .result-wrap.active { display: block; animation: fadeUp 0.6s ease forwards; }
+  .result-title {
+    font-family: 'Cinzel', serif; font-size: clamp(24px, 4.5vw, 38px); font-weight: 900;
+    line-height: 1.25; color: var(--white); text-align: center; margin-bottom: 16px;
+  }
+  .result-title .gold { color: var(--gold-light); }
+  .result-card {
+    max-width: 560px; margin: 0 auto 24px;
+    background: linear-gradient(135deg, #15100A 0%, #0F0A04 100%);
+    border: 1px solid rgba(201,168,76,0.4);
+    border-left: 3px solid var(--gold);
+    border-radius: 8px;
+    padding: 28px 28px 24px;
+    box-shadow: 0 0 60px rgba(201,168,76,0.15), 0 18px 50px rgba(0,0,0,0.7);
+  }
+  .result-card p {
+    font-size: 15.5px; line-height: 1.75; color: #EDDDC0; margin-bottom: 14px;
+  }
+  .result-card p:last-child { margin-bottom: 0; }
+  .result-card strong { color: var(--gold-light); }
+
+  /* SITE FOOTER */
+  .site-footer {
+    position: relative; z-index: 2;
+    margin-top: 60px;
+    padding: 40px 24px 30px;
+    border-top: 1px solid rgba(201,168,76,0.18);
+    text-align: center;
+    color: #B0A088;
+    font-size: 12px; line-height: 1.65;
+    max-width: 680px;
+    margin-left: auto; margin-right: auto;
+  }
+  .site-footer .disclaimer {
+    font-size: 12px; color: #B0A088; line-height: 1.7;
+    max-width: 600px; margin: 0 auto 24px;
+    text-align: left;
+  }
+  .site-footer .disclaimer strong { color: #EDDDC0; }
+  .site-footer p { margin: 8px 0; color: #B0A088; }
+  .site-footer a { color: var(--gold); text-decoration: none; }
+  .site-footer a:hover { color: var(--gold-light); text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .shell { padding: 30px 16px 40px; }
+    .option { padding: 16px 16px; font-size: 14.5px; }
+    .result-card { padding: 22px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<svg class="rays" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(400,0)">
+    <line x1="0" y1="0" x2="-400" y2="400" stroke="#C9A84C" stroke-width="1"/>
+    <line x1="0" y1="0" x2="-300" y2="400" stroke="#C9A84C" stroke-width="1"/>
+    <line x1="0" y1="0" x2="-200" y2="400" stroke="#C9A84C" stroke-width="1"/>
+    <line x1="0" y1="0" x2="-100" y2="400" stroke="#C9A84C" stroke-width="1"/>
+    <line x1="0" y1="0" x2="0"    y2="400" stroke="#C9A84C" stroke-width="1"/>
+    <line x1="0" y1="0" x2="100"  y2="400" stroke="#C9A84C" stroke-width="1"/>
+    <line x1="0" y1="0" x2="200"  y2="400" stroke="#C9A84C" stroke-width="1"/>
+    <line x1="0" y1="0" x2="300"  y2="400" stroke="#C9A84C" stroke-width="1"/>
+    <line x1="0" y1="0" x2="400"  y2="400" stroke="#C9A84C" stroke-width="1"/>
+  </g>
+</svg>
+
+<main class="shell">
+  <div class="brand">Tinnitus &amp; Memory Assessment</div>
+
+  <div id="quiz-ui">
+    <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="step-indicator" id="stepIndicator">Step 1 of 7</div>
+
+    <!-- STEP 1 -->
+    <section class="step active" data-step="1">
+      <p class="step-eyebrow">✦ Personal Assessment ✦</p>
+      <h1 class="step-title">What is your <span class="gold">age range?</span></h1>
+      <p class="step-sub">
+        Tinnitus and memory health vary across life stages.<br>
+        Your assessment will be calibrated based on your age.
+      </p>
+      <div class="options" data-q="age">
+        <button class="option" type="button" data-value="35-44"><span class="marker"></span><span>35 – 44 years old</span></button>
+        <button class="option" type="button" data-value="45-54"><span class="marker"></span><span>45 – 54 years old</span></button>
+        <button class="option" type="button" data-value="55-64"><span class="marker"></span><span>55 – 64 years old</span></button>
+        <button class="option" type="button" data-value="65-74"><span class="marker"></span><span>65 – 74 years old</span></button>
+        <button class="option" type="button" data-value="75+"><span class="marker"></span><span>75 years or older</span></button>
+      </div>
+    </section>
+
+    <!-- STEP 2 -->
+    <section class="step" data-step="2">
+      <p class="step-eyebrow">✦ The Sound Within ✦</p>
+      <h1 class="step-title">How often do you experience <span class="gold">ringing or buzzing</span> in your ears?</h1>
+      <p class="step-sub">Tinnitus is the perception of sound when no external source is present.</p>
+      <div class="options" data-q="tinnitus_freq">
+        <button class="option" type="button" data-value="never"><span class="marker"></span><span>Rarely or never</span></button>
+        <button class="option" type="button" data-value="monthly"><span class="marker"></span><span>A few times a month</span></button>
+        <button class="option" type="button" data-value="weekly"><span class="marker"></span><span>Several times a week</span></button>
+        <button class="option" type="button" data-value="daily"><span class="marker"></span><span>Every day, almost constantly</span></button>
+      </div>
+      <button class="back-link" data-back="1" type="button">← Back</button>
+    </section>
+
+    <!-- STEP 3 -->
+    <section class="step" data-step="3">
+      <p class="step-eyebrow">✦ Memory &amp; Daily Recall ✦</p>
+      <h1 class="step-title">How often do you forget <span class="gold">recent things?</span></h1>
+      <p class="step-sub">Names, conversations, where you placed items, what you came into a room for.</p>
+      <div class="options" data-q="memory_freq">
+        <button class="option" type="button" data-value="never"><span class="marker"></span><span>Rarely — my memory feels sharp</span></button>
+        <button class="option" type="button" data-value="sometimes"><span class="marker"></span><span>Sometimes — it happens occasionally</span></button>
+        <button class="option" type="button" data-value="often"><span class="marker"></span><span>Often — it bothers me</span></button>
+        <button class="option" type="button" data-value="very-often"><span class="marker"></span><span>Very often — it's affecting my life</span></button>
+      </div>
+      <button class="back-link" data-back="2" type="button">← Back</button>
+    </section>
+
+    <!-- STEP 4 -->
+    <section class="step" data-step="4">
+      <p class="step-eyebrow">✦ Sleep &amp; Rest ✦</p>
+      <h1 class="step-title">Does inner noise affect your <span class="gold">sleep?</span></h1>
+      <p class="step-sub">Sleep quality is closely linked to both auditory and cognitive health.</p>
+      <div class="options" data-q="sleep">
+        <button class="option" type="button" data-value="fine"><span class="marker"></span><span>No — I sleep through the night</span></button>
+        <button class="option" type="button" data-value="trouble-falling"><span class="marker"></span><span>Sometimes I have trouble falling asleep</span></button>
+        <button class="option" type="button" data-value="wake-up"><span class="marker"></span><span>I often wake up because of the noise</span></button>
+        <button class="option" type="button" data-value="exhausted"><span class="marker"></span><span>I rarely get a full night's rest</span></button>
+      </div>
+      <button class="back-link" data-back="3" type="button">← Back</button>
+    </section>
+
+    <!-- STEP 5 -->
+    <section class="step" data-step="5">
+      <p class="step-eyebrow">✦ Focus &amp; Concentration ✦</p>
+      <h1 class="step-title">How would you describe your <span class="gold">focus</span> during the day?</h1>
+      <p class="step-sub">Concentration tends to reflect the combined state of hearing, sleep and memory.</p>
+      <div class="options" data-q="focus">
+        <button class="option" type="button" data-value="sharp"><span class="marker"></span><span>Sharp and focused — no problems</span></button>
+        <button class="option" type="button" data-value="slower"><span class="marker"></span><span>A little slower than I used to be</span></button>
+        <button class="option" type="button" data-value="loses-focus"><span class="marker"></span><span>I lose focus several times a day</span></button>
+        <button class="option" type="button" data-value="struggle"><span class="marker"></span><span>I struggle to stay focused on most tasks</span></button>
+      </div>
+      <button class="back-link" data-back="4" type="button">← Back</button>
+    </section>
+
+    <!-- STEP 6 -->
+    <section class="step" data-step="6">
+      <p class="step-eyebrow">✦ Your Journey So Far ✦</p>
+      <h1 class="step-title">Have you tried any of the following <span class="gold">solutions?</span></h1>
+      <p class="step-sub">This helps us understand what hasn't worked for you yet.</p>
+      <div class="options" data-q="tried">
+        <button class="option" type="button" data-value="hearing-aids"><span class="marker"></span><span>Hearing aids or sound therapy</span></button>
+        <button class="option" type="button" data-value="medication"><span class="marker"></span><span>Medications or supplements</span></button>
+        <button class="option" type="button" data-value="doctor"><span class="marker"></span><span>Specialist visits or therapy sessions</span></button>
+        <button class="option" type="button" data-value="nothing"><span class="marker"></span><span>I haven't tried anything yet</span></button>
+      </div>
+      <button class="back-link" data-back="5" type="button">← Back</button>
+    </section>
+
+    <!-- STEP 7 -->
+    <section class="step" data-step="7">
+      <p class="step-eyebrow">✦ Final Question ✦</p>
+      <h1 class="step-title">How motivated are you to <span class="gold">find a natural method</span> that may help?</h1>
+      <p class="step-sub">Your readiness influences how quickly results may show.</p>
+      <div class="options" data-q="motivation">
+        <button class="option" type="button" data-value="curious"><span class="marker"></span><span>Curious — just exploring options</span></button>
+        <button class="option" type="button" data-value="interested"><span class="marker"></span><span>Interested — looking for something practical</span></button>
+        <button class="option" type="button" data-value="motivated"><span class="marker"></span><span>Very motivated — I want a real solution</span></button>
+        <button class="option" type="button" data-value="determined"><span class="marker"></span><span>Determined — I'm ready to try a method today</span></button>
+      </div>
+      <button class="back-link" data-back="6" type="button">← Back</button>
+    </section>
+  </div>
+
+  <!-- LOADING -->
+  <div class="loading-wrap" id="loadingWrap">
+    <div class="halo-loader">
+      <div class="halo-ring"></div>
+      <div class="halo-ring"></div>
+      <div class="halo-ring"></div>
+      <div class="halo-center"></div>
+    </div>
+    <h2 class="loading-title">Analyzing <span class="gold">your assessment</span>...</h2>
+    <p class="loading-sub">
+      Please wait a moment while we cross-reference your responses with our acoustic-cognitive profile data.
+    </p>
+    <ul class="loading-steps" id="loadingSteps">
+      <li><span class="dot"></span>Reviewing your responses...</li>
+      <li><span class="dot"></span>Identifying your auditory-cognitive profile...</li>
+      <li><span class="dot"></span>Matching the most suitable approach...</li>
+      <li><span class="dot"></span>Preparing your personalized recommendation...</li>
+    </ul>
+  </div>
+
+  <!-- RESULT -->
+  <div class="result-wrap" id="resultWrap">
+    <h2 class="result-title">Your <span class="gold">personalized assessment</span> is ready</h2>
+    <div class="result-card">
+      <p>Based on your answers, your responses align with a profile that tends to benefit from a <strong>natural acoustic-frequency method</strong> that addresses both inner-ear noise and cognitive clarity together.</p>
+      <p>The <strong>Onda Tesla program</strong> uses a 12-minute daily auditory protocol designed to gently support the auditory pathway and promote mental focus through specific gamma-wave frequencies.</p>
+      <p>Many people with profiles similar to yours have reported a noticeable difference in calm, focus and sleep within the first weeks of consistent practice.</p>
+      <p style="text-align:center; margin-top: 20px;"><strong>You qualify for today's introductory access.</strong></p>
+    </div>
+    <a class="cta-btn" href="https://pay.mycheckoutt.com/019dea24-e702-7280-b6ab-8d2fb33ae9a5?ref=" id="checkoutBtn" target="_self" rel="noopener">
+      ✦ ACCESS THE PROGRAM NOW ✦
+    </a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="disclaimer">
+    <strong>Disclaimer:</strong> This website and its content are provided by Infosetads for informational and educational purposes only.
+    This is not financial advice, investment guidance, or a promise of any material, spiritual, or personal outcome.
+    The content reflects a Christian perspective on stewardship and is intended for personal study and reflection.
+    Mundpay, Meta (Facebook), Google, and any third parties are <strong>not responsible</strong> for any results, interpretations, or actions taken based on the content presented here.
+  </div>
+  <p>
+    <a href="https://mund.lifegoodfr.online/termsen?utm_source=organic&amp;utm_campaign=&amp;utm_medium=&amp;utm_content=&amp;utm_term=">Terms of Use</a> |
+    <a href="https://mund.lifegoodfr.online/privacyen?utm_source=organic&amp;utm_campaign=&amp;utm_medium=&amp;utm_content=&amp;utm_term=">Privacy Policy</a> |
+    <a href="https://mund.lifegoodfr.online/refunden?utm_source=organic&amp;utm_campaign=&amp;utm_medium=&amp;utm_content=&amp;utm_term=">Refund Policy</a> |
+    <a href="https://mund.lifegoodfr.online/supporten?utm_source=organic&amp;utm_campaign=&amp;utm_medium=&amp;utm_content=&amp;utm_term=">Support</a>
+  </p>
+  <p>
+    <strong>Infosetads</strong> — CNPJ: 58.441.998/0001-40<br>
+    Salvador, Bahia, Brazil<br>
+    Support: <a href="mailto:infosetads1@gmail.com">infosetads1@gmail.com</a>
+  </p>
+</footer>
+
+<script>
+  var TOTAL_STEPS = 7;
+  var state = { step: 1, answers: {} };
+
+  function showStep(n) {
+    state.step = n;
+    document.querySelectorAll('.step').forEach(function(el) {
+      el.classList.toggle('active', Number(el.dataset.step) === n);
+    });
+    document.getElementById('stepIndicator').textContent = 'Step ' + n + ' of ' + TOTAL_STEPS;
+    var pct = Math.round((n / TOTAL_STEPS) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Auto-advance on option click (300ms feedback delay)
+  document.querySelectorAll('.options').forEach(function(group) {
+    var qName = group.getAttribute('data-q');
+    group.querySelectorAll('.option').forEach(function(opt) {
+      opt.addEventListener('click', function() {
+        // Visual feedback: mark selected
+        group.querySelectorAll('.option').forEach(function(o) { o.classList.remove('selected'); });
+        opt.classList.add('selected');
+        state.answers[qName] = opt.getAttribute('data-value');
+
+        // Advance after short delay
+        setTimeout(function() {
+          if (state.step < TOTAL_STEPS) {
+            showStep(state.step + 1);
+          } else {
+            startLoading();
+          }
+        }, 320);
+      });
+    });
+  });
+
+  // Back buttons
+  document.querySelectorAll('[data-back]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      showStep(Number(btn.getAttribute('data-back')));
+    });
+  });
+
+  // ---------- LOADING -> RESULT ----------
+  function startLoading() {
+    document.getElementById('quiz-ui').style.display = 'none';
+    var wrap = document.getElementById('loadingWrap');
+    wrap.classList.add('active');
+
+    var steps = document.querySelectorAll('#loadingSteps li');
+    var i = 0;
+    steps[0].classList.add('active');
+    var tick = setInterval(function() {
+      steps[i].classList.remove('active');
+      steps[i].classList.add('done');
+      i++;
+      if (i < steps.length) {
+        steps[i].classList.add('active');
+      } else {
+        clearInterval(tick);
+      }
+    }, 700);
+
+    setTimeout(function() {
+      wrap.classList.remove('active');
+      wrap.style.display = 'none';
+      document.getElementById('resultWrap').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 3200);
+  }
+
+  // Forward query string (utm/fbclid/ttclid) to checkout
+  (function forwardCheckoutParams() {
+    var btn = document.getElementById('checkoutBtn');
+    var qs = window.location.search;
+    if (!qs) return;
+    var url = new URL(btn.href);
+    var current = new URLSearchParams(qs);
+    current.forEach(function(v, k) {
+      if (v) url.searchParams.set(k, v);
+    });
+    btn.href = url.toString();
+  })();
+</script>
+</body>
+</html>
