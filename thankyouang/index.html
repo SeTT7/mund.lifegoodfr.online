@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<title>Thank You — Your Sacred Kit Is Ready</title>
+
+<script>
+var GUIDE_URL = 'https://app.lifegoodfr.online';
+function buildRedirectUrl(base) {
+  var params = new URLSearchParams(window.location.search);
+  var keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid','ttclid','src','sck','email','order_id'];
+  var forward = new URLSearchParams();
+  keys.forEach(function(k) { if (params.get(k)) forward.set(k, params.get(k)); });
+  var qs = forward.toString();
+  return qs ? base + (base.indexOf('?') >= 0 ? '&' : '?') + qs : base;
+}
+function goToGuide() { window.location.href = buildRedirectUrl(GUIDE_URL); }
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: dark;
+    --gold: #F8E5B0;
+    --gold-light: #FFF5E0;
+    --gold-dark: #8B6914;
+    --gold-warm: #D4A93D;
+    --dark: #160E08;
+    --dark2: #0A0705;
+    --cream: #F5F0E8;
+    --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { min-height: 100%; }
+  body {
+    background: radial-gradient(ellipse at 50% -10%, #2A1908 0%, #160E08 55%, #0A0705 100%);
+    color: var(--cream);
+    font-family: 'Lora', Georgia, serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 999; opacity: 0.3;
+  }
+
+  /* Floating dust particles */
+  .dust { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+  .dust span {
+    position: absolute; bottom: -20px;
+    width: 2px; height: 2px; border-radius: 50%;
+    background: var(--gold-light); opacity: 0;
+    box-shadow: 0 0 6px var(--gold-light);
+    animation: floatUp linear infinite;
+  }
+  .dust span:nth-child(1)  { left: 8%;  animation-duration: 22s; animation-delay: 0s; }
+  .dust span:nth-child(2)  { left: 18%; animation-duration: 28s; animation-delay: 4s; }
+  .dust span:nth-child(3)  { left: 28%; animation-duration: 25s; animation-delay: 2s; }
+  .dust span:nth-child(4)  { left: 38%; animation-duration: 30s; animation-delay: 8s; }
+  .dust span:nth-child(5)  { left: 48%; animation-duration: 24s; animation-delay: 1s; }
+  .dust span:nth-child(6)  { left: 58%; animation-duration: 27s; animation-delay: 6s; }
+  .dust span:nth-child(7)  { left: 68%; animation-duration: 26s; animation-delay: 3s; }
+  .dust span:nth-child(8)  { left: 78%; animation-duration: 29s; animation-delay: 5s; }
+  .dust span:nth-child(9)  { left: 88%; animation-duration: 23s; animation-delay: 7s; }
+  .dust span:nth-child(10) { left: 12%; animation-duration: 32s; animation-delay: 11s; width: 3px; height: 3px; }
+  .dust span:nth-child(11) { left: 52%; animation-duration: 34s; animation-delay: 9s; width: 3px; height: 3px; }
+  .dust span:nth-child(12) { left: 82%; animation-duration: 31s; animation-delay: 12s; width: 3px; height: 3px; }
+  @keyframes floatUp {
+    0%   { transform: translateY(0) translateX(0); opacity: 0; }
+    10%  { opacity: 0.9; }
+    50%  { transform: translateY(-50vh) translateX(15px); opacity: 0.6; }
+    90%  { opacity: 0.4; }
+    100% { transform: translateY(-105vh) translateX(-10px); opacity: 0; }
+  }
+
+  /* Layout */
+  .wrap {
+    position: relative; z-index: 2;
+    flex: 1;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 60px 24px 50px;
+    text-align: center;
+  }
+  .rays {
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 100%; max-width: 900px; height: 380px;
+    pointer-events: none; opacity: 0.06;
+  }
+
+  /* HALO */
+  .halo {
+    position: relative; width: 170px; height: 170px;
+    margin: 0 auto 36px;
+    opacity: 0; animation: fadeUp 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.2s, float 6s ease-in-out infinite 1.2s;
+  }
+  .halo::before {
+    content: ''; position: absolute; inset: -30px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(248,229,176,0.5) 0%, rgba(248,229,176,0.12) 40%, transparent 70%);
+    animation: haloPulse 4.5s ease-in-out infinite;
+  }
+  .halo-ring {
+    position: absolute; inset: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(248,229,176,0.55);
+    animation: ringSpin 60s linear infinite;
+  }
+  .halo-ring::before,
+  .halo-ring::after {
+    content: ''; position: absolute;
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--gold-light);
+    box-shadow: 0 0 10px var(--gold-light);
+  }
+  .halo-ring::before { top: -3px; left: 50%; transform: translateX(-50%); }
+  .halo-ring::after  { bottom: -3px; left: 50%; transform: translateX(-50%); }
+  .halo-ring-2 {
+    position: absolute; inset: 18px;
+    border-radius: 50%;
+    border: 1px dashed rgba(248,229,176,0.32);
+    animation: ringSpin 90s linear infinite reverse;
+  }
+  .halo svg {
+    position: absolute; inset: 30px; width: calc(100% - 60px); height: calc(100% - 60px);
+    z-index: 2;
+  }
+  @keyframes haloPulse { 0%, 100% { opacity: 0.55; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1.08); } }
+  @keyframes ringSpin { to { transform: rotate(360deg); } }
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+  /* Text */
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 6px;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 22px;
+    opacity: 0; animation: fadeUp 1s ease forwards 0.5s;
+  }
+  .headline {
+    font-family: 'Cinzel', serif; font-size: clamp(32px, 6vw, 60px);
+    font-weight: 900; line-height: 1.1; color: var(--white);
+    max-width: 760px; margin: 0 auto 24px;
+    letter-spacing: 1px;
+    opacity: 0; animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.75s;
+  }
+  .headline .gold {
+    color: var(--gold-light);
+    text-shadow: 0 0 30px rgba(248,229,176,0.4);
+  }
+  .sub {
+    font-size: clamp(16px, 2.3vw, 19px); color: #EDDDC0;
+    max-width: 540px; margin: 0 auto 44px; line-height: 1.7;
+    font-style: italic;
+    opacity: 0; animation: fadeUp 1s ease forwards 1s;
+  }
+
+  /* Divider */
+  .divider {
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+    width: 100%; max-width: 360px; margin: 0 auto 44px;
+    opacity: 0; animation: fadeUp 1s ease forwards 1.15s;
+  }
+  .divider::before, .divider::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-dark), transparent);
+  }
+  .divider span { color: var(--gold); font-size: 18px; }
+
+  /* CTA */
+  .cta-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #D4A93D 0%, #8B6914 100%);
+    color: #160E08; font-family: 'Cinzel', serif;
+    font-size: clamp(15px, 2.3vw, 20px); font-weight: 900;
+    padding: 22px 44px; border-radius: 4px; text-decoration: none;
+    letter-spacing: 1.5px;
+    box-shadow: 0 8px 30px rgba(212,169,61,0.5), 0 0 0 1px rgba(255,245,224,0.4), inset 0 1px 0 rgba(255,255,255,0.25);
+    transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative; overflow: hidden; cursor: pointer; border: none;
+    width: 100%; max-width: 520px;
+    opacity: 0; animation: fadeUp 1s ease forwards 1.3s, glow 3.5s ease-in-out infinite 2.4s;
+  }
+  .cta-btn::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+    animation: shimmer 3s infinite 2s;
+  }
+  .cta-btn::after {
+    content: ''; position: absolute; inset: -2px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, transparent, rgba(255,245,224,0.5), transparent);
+    z-index: -1; opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .cta-btn:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 14px 44px rgba(212,169,61,0.7), 0 0 0 1px rgba(255,245,224,0.7), inset 0 1px 0 rgba(255,255,255,0.3); }
+  .cta-btn:hover::after { opacity: 1; }
+  .cta-btn:active { transform: translateY(-1px) scale(0.99); }
+  .cta-btn-sub {
+    display: block; font-family: 'Lora', serif; font-size: 12px;
+    font-weight: 400; font-style: italic; margin-top: 5px;
+    opacity: 0.85; letter-spacing: 0; color: #1d1408;
+  }
+  @keyframes shimmer { 0% { left: -100%; } 60% { left: 200%; } 100% { left: 200%; } }
+  @keyframes glow {
+    0%, 100% { box-shadow: 0 8px 30px rgba(212,169,61,0.5), 0 0 0 1px rgba(255,245,224,0.4), inset 0 1px 0 rgba(255,255,255,0.25); }
+    50%      { box-shadow: 0 10px 40px rgba(212,169,61,0.7), 0 0 0 1px rgba(255,245,224,0.6), inset 0 1px 0 rgba(255,255,255,0.3); }
+  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Tiny tagline below button */
+  .tagline {
+    margin-top: 28px;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); font-family: 'Cinzel', serif;
+    opacity: 0; animation: fadeUp 1s ease forwards 1.5s;
+  }
+  .tagline-sub {
+    margin-top: 8px;
+    font-size: 13px; color: #8E7C66; font-style: italic;
+    opacity: 0; animation: fadeUp 1s ease forwards 1.65s;
+  }
+
+  /* Footer */
+  .footer {
+    position: relative; z-index: 2;
+    text-align: center; padding: 24px 20px;
+    font-size: 11px; color: #5a4e3e; line-height: 1.7;
+  }
+  .footer a { color: #8B6914; text-decoration: none; margin: 0 6px; }
+  .footer a:hover { color: var(--gold); }
+
+  @media (max-width: 600px) {
+    .wrap { padding: 50px 20px 40px; }
+    .halo { width: 140px; height: 140px; margin-bottom: 28px; }
+    .cta-btn { padding: 20px 28px; letter-spacing: 1px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="dust" aria-hidden="true">
+  <span></span><span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<main class="wrap">
+  <svg class="rays" viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g transform="translate(400,0)">
+      <line x1="0" y1="0" x2="-400" y2="380" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="-260" y2="380" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="-130" y2="380" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="0"    y2="380" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="130"  y2="380" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="260"  y2="380" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="400"  y2="380" stroke="#C9A84C" stroke-width="1"/>
+    </g>
+  </svg>
+
+  <div class="halo">
+    <span class="halo-ring"></span>
+    <span class="halo-ring-2"></span>
+    <svg viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <radialGradient id="g1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#FFF5E0"/>
+          <stop offset="60%" stop-color="#F8E5B0"/>
+          <stop offset="100%" stop-color="#8B6914"/>
+        </radialGradient>
+      </defs>
+      <circle cx="55" cy="55" r="42" fill="#0A0705" stroke="url(#g1)" stroke-width="1.5"/>
+      <path d="M 36 56 L 50 71 L 76 42" fill="none" stroke="url(#g1)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <p class="eyebrow">✦ Thank You ✦</p>
+  <h1 class="headline">
+    Your Guide To Connect With<br>
+    <span class="gold">Archangel Michael</span> Is Ready
+  </h1>
+  <p class="sub">
+    The path to heaven is now in your hands.<br>
+    Tap below to enter your guide.
+  </p>
+
+  <div class="divider"><span>✦</span></div>
+
+  <button class="cta-btn" onclick="goToGuide()">
+    ✦ ACCESS MY GUIDE ✦
+    <span class="cta-btn-sub">The Calling Of My Angel · Instant access</span>
+  </button>
+
+  <p class="tagline">✦ Lifetime Access ✦</p>
+  <p class="tagline-sub">Access The Calling Of My Angel on all your devices.</p>
+</main>
+
+<div class="footer">
+  © The Calling Of My Angel ·
+  <a href="#">Terms</a> ·
+  <a href="#">Privacy</a> ·
+  <a href="#">Support</a>
+</div>
+
+</body>
+</html>
