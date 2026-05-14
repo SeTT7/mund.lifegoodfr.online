@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<title>El Llamado del Ángel — Un Paso Más</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+<script src="https://upsell.mundpay.com/script-v2.js" defer async></script>
+
+<style>
+  :root {
+    color-scheme: dark;
+    --gold: #F8E5B0;
+    --gold-light: #FFF5E0;
+    --gold-dark: #8B6914;
+    --red: #C0392B;
+    --red-bright: #E74C3C;
+    --green: #2BAC22;
+    --green-light: #5BD150;
+    --dark: #160E08;
+    --dark2: #1F1408;
+    --cream: #F5F0E8;
+    --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { min-height: 100%; }
+  body {
+    font-family: 'Lora', Georgia, serif;
+    background: radial-gradient(ellipse at 50% 0%, #2A1908 0%, #160E08 60%);
+    color: var(--cream);
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 1; opacity: 0.4;
+  }
+  .urgency-bar {
+    background: var(--red); text-align: center; padding: 12px 20px;
+    font-family: 'Cinzel', serif; font-size: clamp(12px, 2vw, 14px);
+    font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: white; position: relative; z-index: 10;
+    animation: pulse-bar 2s ease-in-out infinite;
+  }
+  @keyframes pulse-bar { 0%, 100% { background: var(--red); } 50% { background: #8B0000; } }
+  .container {
+    position: relative; z-index: 2;
+    max-width: 760px; margin: 0 auto; padding: 50px 24px 60px;
+  }
+  .rays {
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 100%; max-width: 800px; height: 280px;
+    pointer-events: none; opacity: 0.07; z-index: 1;
+  }
+  .eyebrow {
+    text-align: center;
+    font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 5px;
+    color: var(--gold); text-transform: uppercase; margin-bottom: 18px;
+    text-shadow: 0 0 8px rgba(245,220,145,0.85), 0 0 20px rgba(240,208,128,0.4);
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.15s;
+  }
+  h1 {
+    text-align: center;
+    font-family: 'Cinzel', serif; font-size: clamp(26px, 4.5vw, 42px);
+    font-weight: 900; line-height: 1.2; color: var(--white);
+    margin-bottom: 18px; letter-spacing: 0.5px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.3s;
+  }
+  h1 .gold { color: var(--gold-light); }
+  .lead {
+    text-align: center;
+    font-size: clamp(15px, 2.2vw, 19px); color: #EDDDC0;
+    font-style: italic; max-width: 640px; margin: 0 auto 28px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.45s;
+  }
+  h2 {
+    font-family: 'Cinzel', serif; font-size: clamp(20px, 3vw, 28px);
+    font-weight: 900; line-height: 1.25; color: var(--gold-light);
+    text-align: center; margin: 50px 0 18px; letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(245,220,145,0.4);
+  }
+  p {
+    font-size: clamp(15px, 1.9vw, 17px); line-height: 1.85;
+    color: #EDDDC0; margin-bottom: 18px;
+  }
+  p strong { color: var(--white); font-weight: 600; }
+  p .highlight { color: var(--gold-light); font-style: italic; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .star-divider {
+    display: flex; align-items: center; justify-content: center;
+    gap: 16px; margin: 30px auto 36px; max-width: 480px;
+  }
+  .star-divider::before, .star-divider::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-dark), transparent);
+  }
+  .star-divider span { color: var(--gold); font-size: 18px; }
+
+  .warning-box {
+    background: linear-gradient(135deg, #1B130A 0%, #221708 100%);
+    border: 1px solid var(--gold-dark);
+    border-left: 4px solid var(--red);
+    border-radius: 8px;
+    padding: 26px 28px;
+    margin: 30px auto 36px;
+    max-width: 680px;
+    box-shadow: 0 0 60px rgba(201,168,76,0.18), 0 18px 50px rgba(0,0,0,0.55);
+  }
+  .warning-title {
+    font-family: 'Cinzel', serif; font-size: clamp(15px, 2.2vw, 18px);
+    color: var(--red-bright); letter-spacing: 2px; text-transform: uppercase;
+    font-weight: 700; margin-bottom: 14px;
+    text-align: center;
+  }
+  .warning-step {
+    font-family: 'Cinzel', serif; font-size: clamp(20px, 3vw, 28px);
+    font-weight: 900; color: var(--gold-light); margin-bottom: 14px;
+    text-shadow: 0 0 8px rgba(245,220,145,0.85), 0 0 20px rgba(240,208,128,0.4);
+    text-align: center;
+  }
+  .warning-text {
+    font-size: 16px; line-height: 1.75; color: #EDDDC0;
+    text-align: center;
+  }
+
+  .feature-list {
+    background: linear-gradient(135deg, #1B130A 0%, #221708 100%);
+    border: 1px solid rgba(201,168,76,0.32);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin: 22px 0 30px;
+    list-style: none;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+  }
+  .feature-list li {
+    padding: 9px 0; font-size: clamp(15px, 2vw, 17px);
+    line-height: 1.6; color: #EDDDC0;
+    border-bottom: 1px dashed rgba(201,168,76,0.15);
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .feature-list li:last-child { border-bottom: none; }
+  .feature-list li .icon {
+    flex-shrink: 0; color: var(--gold-light);
+    font-weight: 700; font-size: 18px; line-height: 1.5;
+  }
+
+  .price-box {
+    margin: 50px auto 30px;
+    max-width: 620px;
+    background: linear-gradient(135deg, #15100A 0%, #1A1208 100%);
+    border: 2px solid var(--gold-dark);
+    border-radius: 10px;
+    padding: 36px 28px 32px;
+    text-align: center;
+    box-shadow: 0 0 80px rgba(201,168,76,0.22), 0 25px 60px rgba(0,0,0,0.85);
+  }
+  .price-eyebrow {
+    font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 5px;
+    color: var(--red-bright); text-transform: uppercase; margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(231,76,60,0.45);
+  }
+  .price-title {
+    font-family: 'Cinzel', serif; font-size: clamp(22px, 3.5vw, 30px);
+    font-weight: 900; color: var(--gold-light); letter-spacing: 2px;
+    margin-bottom: 22px;
+  }
+  .old-price {
+    font-size: 16px; color: #B0A088; font-style: italic;
+    margin-bottom: 4px;
+  }
+  .old-price span { text-decoration: line-through; color: var(--red); }
+  .new-price {
+    font-family: 'Cinzel', serif; color: var(--gold-light);
+    font-size: clamp(56px, 9vw, 86px); font-weight: 900;
+    line-height: 1; letter-spacing: -1px;
+    text-shadow: 0 0 30px rgba(240,208,128,0.5);
+    margin: 6px 0;
+  }
+  .new-price .currency { font-size: 0.55em; vertical-align: top; margin-right: 4px; }
+  .price-tag {
+    font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 3px;
+    color: var(--gold); margin-bottom: 24px; text-transform: uppercase;
+  }
+  .price-cta-wrap {
+    display: flex; flex-direction: column; gap: 12px; align-items: center;
+    margin-top: 20px;
+  }
+  [data-mndpay-render] { width: 100%; max-width: 100%; }
+
+  @media (max-width: 600px) {
+    .container { padding: 36px 16px 40px; }
+    h2 { margin: 36px 0 14px; }
+    .feature-list { padding: 20px 22px; }
+    .warning-box { padding: 20px 18px; }
+    .price-box { padding: 28px 18px 24px; }
+  }
+
+  /* MULTI-CURRENCY GRID */
+  .price-grid { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 16px; margin: 6px auto 10px; max-width: 460px; }
+  .price-grid-main { display: flex; flex-direction: column; align-items: center; min-width: 0; }
+  .price-grid-main .new-price { margin: 0; }
+  .price-usd-side { margin-top: 6px; font-family: 'Lora', serif; font-size: 13px; font-style: italic; color: rgba(232,219,196,0.45); letter-spacing: 0.5px; }
+  .country-picker { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; background: rgba(15,10,4,0.6); border: 1px solid rgba(201,168,76,0.35); border-radius: 40px; color: var(--gold-light); font-family: 'Cinzel', serif; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; cursor: pointer; transition: border-color 0.2s, background 0.2s, transform 0.15s; white-space: nowrap; }
+  .country-picker:hover { border-color: var(--gold-light); background: rgba(15,10,4,0.85); transform: translateY(-1px); }
+  .country-flag { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 16px; border-radius: 2px; overflow: hidden; box-shadow: 0 0 0 1px rgba(0,0,0,0.4); }
+  .country-flag svg { width: 100%; height: 100%; display: block; }
+  .country-caret { transition: transform 0.25s; flex-shrink: 0; }
+  .country-picker[aria-expanded="true"] .country-caret { transform: rotate(180deg); }
+  .country-list { max-width: 360px; margin: 8px auto 0; background: linear-gradient(135deg, rgba(15,10,4,0.97) 0%, rgba(21,16,10,0.97) 100%); border: 1px solid rgba(201,168,76,0.45); border-radius: 10px; padding: 8px; box-shadow: 0 8px 32px rgba(0,0,0,0.6); text-align: left; animation: countryListIn 0.2s ease-out; }
+  @keyframes countryListIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+  .country-option { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 6px; cursor: pointer; background: transparent; border: none; width: 100%; color: var(--cream); font-family: 'Lora', serif; font-size: 14px; text-align: left; transition: background 0.15s; }
+  .country-option:hover { background: rgba(201,168,76,0.12); }
+  .country-option.selected { background: rgba(201,168,76,0.18); color: var(--gold-light); font-weight: 600; }
+  .country-option .opt-flag { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 18px; border-radius: 2px; overflow: hidden; box-shadow: 0 0 0 1px rgba(0,0,0,0.4); flex-shrink: 0; }
+  .country-option .opt-flag svg { width: 100%; height: 100%; display: block; }
+  .country-option .opt-name { flex: 1; }
+  .country-option .opt-code { color: var(--gold); font-family: 'Cinzel', serif; font-weight: 700; font-size: 12px; letter-spacing: 1.5px; }
+  @media (max-width: 480px) { .price-grid { grid-template-columns: 1fr; justify-items: center; gap: 12px; } .country-picker { padding: 8px 12px; font-size: 12px; } }
+</style>
+</head>
+<body>
+
+<div class="urgency-bar">
+  ✦ &nbsp; TU PEDIDO NO ESTÁ COMPLETO — NO CIERRES ESTA PÁGINA &nbsp; ✦
+</div>
+
+<div class="container">
+  <svg class="rays" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(400,0)">
+      <line x1="0" y1="0" x2="-400" y2="280" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="-260" y2="280" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="-130" y2="280" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="0"    y2="280" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="130"  y2="280" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="260"  y2="280" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="400"  y2="280" stroke="#C9A84C" stroke-width="1"/>
+    </g>
+  </svg>
+
+  <p class="eyebrow">✦ Los Cielos Te Han Escuchado ✦</p>
+  <h1>🎉 Felicitaciones por tomar la decisión más importante <span class="gold">para cambiar tu vida.</span></h1>
+  <p class="lead">Este es el momento exacto en que todo comienza a cambiar a tu favor.</p>
+
+  <div class="star-divider"><span>★</span></div>
+
+  <div class="warning-box">
+    <p class="warning-title">⚠ Tu pedido aún no está completo — no abandones esta página.</p>
+    <p class="warning-step">Solo Un Paso Más...</p>
+    <p class="warning-text">Estás a segundos de descubrir el <strong style="color:var(--white);">ritual oculto</strong> usado por millonarios en todo el mundo.</p>
+  </div>
+
+  <h2>✦ Siempre lo Supieron, Pero Nunca Quisieron Que lo Descubrieras</h2>
+  <p>
+    Las <strong>7 Leyes Herméticas</strong> no funcionan como te las enseñaron, y por eso nunca te has hecho rico.
+  </p>
+  <p>
+    <strong>Obama, Beyoncé, Musk, Joe Dispenza, incluso el Papa</strong> — todos desbloquearon la versión oculta de estas leyes. Y por eso la riqueza, la fama y el poder fluyen hacia ellos sin esfuerzo.
+  </p>
+  <p>
+    Ahora es <span class="highlight">tu turno</span>. Si llegaste hasta aquí, no fue por casualidad. Tu ángel te está guiando hacia algo aún más grande.
+  </p>
+
+  <h2>El Código Sagrado del Padre Pío</h2>
+  <p>
+    Existe un <strong>código sagrado</strong>, oculto durante siglos, invisible incluso para los más fieles. El <strong>Padre Pío</strong> una vez lo reveló para ayudar a la humanidad. Pero se perdió en el tiempo...
+  </p>
+  <p>
+    Hasta que nombres como <strong>Spielberg</strong> y <strong>Will Smith</strong> lo encontraron de nuevo y lo guardaron dentro de un círculo secreto de la élite mundial.
+  </p>
+  <p>
+    El código completo prohibido nunca pudo compartirse públicamente — ni siquiera en el primer paso. Pero como sigues aquí, has demostrado que <span class="highlight">no eres como los demás</span>. Estás preparado y eres digno.
+  </p>
+  <p>
+    Y es solo para personas como tú que revelamos lo que viene a continuación. Porque solo aquellos más cercanos a la luz han accedido jamás a esto.
+  </p>
+
+  <div class="star-divider"><span>★</span></div>
+
+  <h2>🔥 Doblega la Realidad a Tu Favor</h2>
+  <p>
+    Tomaste la decisión correcta. <strong>El Llamado de Mi Ángel de la Guarda</strong> que acabas de recibir ya va a desbloquear prosperidad para ti en los próximos días.
+  </p>
+  <p>
+    Pero cuando se combina con esta <strong>actualización prohibida</strong>, los efectos comienzan en menos de <span class="highlight">24 horas</span> y van mucho más profundo.
+  </p>
+  <p>
+    No solo <em>atraerás</em> la riqueza — <strong>doblegarás la realidad a tu favor.</strong>
+  </p>
+  <p>
+    No desperdicies esta oportunidad. Solo la consigues ahora, y si abandonas esta página, no tendrás otra.
+  </p>
+
+  <h2>💎 Lo Que Vas a Desbloquear</h2>
+  <ul class="feature-list">
+    <li><span class="icon">✦</span><span>Cómo activar las <strong>7 leyes ocultas</strong> para que el dinero te persiga</span></li>
+    <li><span class="icon">✦</span><span>El código exacto que usan las celebridades de élite para <strong>doblegar la realidad</strong> a su favor</span></li>
+    <li><span class="icon">✦</span><span>Un ritual de <strong>7 días</strong> para desbloquear transferencias de dinero inesperadas</span></li>
+    <li><span class="icon">✦</span><span>La <strong>brutal diferencia</strong> entre el Kybalión que conoces y el que usa la élite</span></li>
+    <li><span class="icon">✦</span><span>Tan simple que solo necesitas <strong>5 minutos antes de dormir</strong> — y en 24 horas comenzarás a ver las señales</span></li>
+  </ul>
+
+  <h2>⚠ Te Enseñaron Mal, y Tú lo Creíste</h2>
+  <p>
+    Repetiste afirmaciones, visualizaste, meditaste — pero el dinero <em>nunca llegó</em>.
+  </p>
+  <p>
+    <strong>No es tu culpa. Es culpa de ellos.</strong> Te ocultaron la verdad.
+  </p>
+  <p>
+    Pero <strong>Barack Obama</strong> lo sabía. <strong>Beyoncé</strong> también. ¿Y <strong>Joe Dispenza</strong>? Es el científico elegido por la élite para explicar cómo doblar el campo cuántico con estas leyes ocultas.
+  </p>
+  <p>
+    No hablan de ello públicamente — pero lo usan en silencio.
+  </p>
+
+  <h2>📜 La Versión Prohibida del Kybalión</h2>
+  <p>
+    Lo que estás a punto de acceder es la <strong>versión prohibida del Kybalión</strong>. No la que está en las librerías ni en los videos de YouTube.
+  </p>
+  <p>
+    Este es el código <span class="highlight">real</span> — el que verdaderamente activa las leyes del mundo invisible.
+  </p>
+  <p>
+    Miles ya reportan dinero apareciendo de la nada, personas ricas surgiendo del aire, oportunidades que parecen <em>orquestadas por algo invisible</em>.
+  </p>
+
+  <h2>🌅 Imagínate Despertando Así</h2>
+  <p>
+    Imagina esto: despertar con <strong>depósitos inesperados en PayPal</strong>, personas que antes te ignoraban ahora persiguiéndote con ofertas, y tú — <span class="highlight">sosteniendo la llave</span> — doblegando tu propia realidad.
+  </p>
+  <p>
+    La primera parte fue el despertar. Ahora tu ángel te está entregando la <strong>llave sagrada</strong> que los santos protegieron.
+  </p>
+  <p>
+    <strong>Las 7 Leyes Herméticas Que Convierten la Oración en Manifestación Visible e Imparable.</strong>
+  </p>
+  <p>
+    No es coincidencia. Aquí es donde los milagros se vuelven realidad. Solo necesitas <strong>5 minutos antes de dormir</strong>, y en 24 horas comenzarás a ver las señales.
+  </p>
+
+  <div class="warning-box" style="border-left-color: var(--gold);">
+    <p class="warning-title" style="color: var(--gold-light);">⚠ Una Sola Oportunidad</p>
+    <p class="warning-text">
+      Una vez visto, esto <strong style="color: var(--white);">no se puede des-ver</strong>. Cierra esta pestaña, y se va para siempre.<br>
+      <strong style="color: var(--red-bright);">No hay botón de retroceso. No hay segundas oportunidades.</strong>
+    </p>
+  </div>
+
+  <div class="price-box">
+    <p class="price-eyebrow">🔥 Solo Hoy — Página Secreta Abierta</p>
+    <p class="price-title">Las 7 Leyes Del Kybalión Prohibidas</p>
+    <p class="old-price">Normalmente: <span id="oldPriceDisplay">$67</span></p>
+
+    <div class="price-grid">
+      <div class="price-grid-main">
+        <div class="new-price"><span class="currency" id="priceSymbol">$</span><span id="priceAmount">27</span><span id="priceCents">.00</span></div>
+        <p class="price-usd-side" id="priceUsdSide">(~$27.00 USD)</p>
+      </div>
+      <button class="country-picker" id="countryPickerBtn" type="button" aria-haspopup="listbox" aria-expanded="false">
+        <span class="country-flag" id="countryFlag" aria-hidden="true"></span>
+        <span class="country-code" id="countryCode">USD</span>
+        <svg class="country-caret" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+    </div>
+    <div class="country-list" id="countryList" role="listbox" hidden></div>
+
+    <p class="price-tag">Pago único · Acceso instantáneo</p>
+
+    <div class="price-cta-wrap">
+      <div data-mndpay-render="019db22d-f41b-73b1-b69d-c46cfc7ee651"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================== MULTI-CURRENCY LOGIC ================== -->
+<script>
+(function() {
+  var BASE_USD = 27.00;
+  var OLD_USD  = 67.00;
+
+  var FLAGS = {
+    US: '<svg viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="16" fill="#B22234"/><path d="M0 1.85h24M0 5.54h24M0 9.23h24M0 12.92h24" stroke="#fff" stroke-width="1.23"/><rect width="9.6" height="8.6" fill="#3C3B6E"/></svg>',
+    CO: '<svg viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="8" fill="#FCD116"/><rect y="8" width="24" height="4" fill="#003893"/><rect y="12" width="24" height="4" fill="#CE1126"/></svg>',
+    MX: '<svg viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg"><rect width="8" height="16" fill="#006847"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE1126"/><circle cx="12" cy="8" r="2.2" fill="none" stroke="#806020" stroke-width="0.6"/></svg>',
+    AR: '<svg viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="16" fill="#74ACDF"/><rect y="5.33" width="24" height="5.33" fill="#fff"/><circle cx="12" cy="8" r="1.6" fill="#F6B40E"/></svg>',
+    CL: '<svg viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="8" fill="#fff"/><rect y="8" width="24" height="8" fill="#D52B1E"/><rect width="8" height="8" fill="#0039A6"/><polygon points="4,2 4.7,4.1 6.8,4.1 5.1,5.3 5.8,7.4 4,6.2 2.2,7.4 2.9,5.3 1.2,4.1 3.3,4.1" fill="#fff"/></svg>',
+    PE: '<svg viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg"><rect width="8" height="16" fill="#D91023"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#D91023"/></svg>',
+    ES: '<svg viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="16" fill="#AA151B"/><rect y="4" width="24" height="8" fill="#F1BF00"/></svg>',
+    BR: '<svg viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="16" fill="#009C3B"/><polygon points="12,2 22,8 12,14 2,8" fill="#FFDF00"/><circle cx="12" cy="8" r="3" fill="#002776"/></svg>'
+  };
+
+  var COUNTRIES = [
+    { code: 'US', currency: 'USD', name: 'United States',  symbol: '$',   rate: 1,       locale: 'en-US' },
+    { code: 'CO', currency: 'COP', name: 'Colombia',        symbol: '$',   rate: 4200,    locale: 'es-CO' },
+    { code: 'MX', currency: 'MXN', name: 'México',          symbol: '$',   rate: 17,      locale: 'es-MX' },
+    { code: 'AR', currency: 'ARS', name: 'Argentina',       symbol: '$',   rate: 1200,    locale: 'es-AR' },
+    { code: 'CL', currency: 'CLP', name: 'Chile',           symbol: '$',   rate: 950,     locale: 'es-CL' },
+    { code: 'PE', currency: 'PEN', name: 'Perú',            symbol: 'S/',  rate: 3.7,     locale: 'es-PE' },
+    { code: 'ES', currency: 'EUR', name: 'España',          symbol: '€',   rate: 0.92,    locale: 'es-ES' },
+    { code: 'BR', currency: 'BRL', name: 'Brasil',          symbol: 'R$',  rate: 5.1,     locale: 'pt-BR' }
+  ];
+
+  function byCode(c) { for (var i = 0; i < COUNTRIES.length; i++) if (COUNTRIES[i].code === c) return COUNTRIES[i]; return COUNTRIES[0]; }
+  function smartRound(v) { if (v >= 10000) return Math.round(v / 500) * 500; if (v >= 1000) return Math.round(v / 50) * 50; if (v >= 100) return Math.round(v / 10) * 10; if (v >= 10) return Math.round(v); return Math.round(v * 10) / 10; }
+  function formatNumber(n, locale) { try { return new Intl.NumberFormat(locale || 'en-US', { maximumFractionDigits: 2 }).format(n); } catch (e) { return String(n); } }
+  function splitIntegerCents(n) { var rounded = Math.round(n * 100) / 100; var s = rounded.toFixed(2); var parts = s.split('.'); return { whole: parts[0], cents: '.' + parts[1] }; }
+
+  var els = {
+    symbol:    document.getElementById('priceSymbol'),
+    amount:    document.getElementById('priceAmount'),
+    cents:     document.getElementById('priceCents'),
+    usdSide:   document.getElementById('priceUsdSide'),
+    flag:      document.getElementById('countryFlag'),
+    code:      document.getElementById('countryCode'),
+    pickerBtn: document.getElementById('countryPickerBtn'),
+    list:      document.getElementById('countryList'),
+    oldPrice:  document.getElementById('oldPriceDisplay')
+  };
+
+  function applyCountry(country) {
+    var raw = BASE_USD * country.rate;
+    var rounded = smartRound(raw);
+    els.flag.innerHTML = FLAGS[country.code] || FLAGS.US;
+    els.code.textContent = country.currency;
+
+    if (country.code === 'US') {
+      var s = splitIntegerCents(rounded);
+      els.symbol.textContent = '$';
+      els.amount.textContent = s.whole;
+      els.cents.textContent  = s.cents;
+      els.usdSide.style.visibility = 'hidden';
+      els.oldPrice.textContent = '$' + OLD_USD.toFixed(2);
+    } else {
+      els.symbol.textContent = country.symbol;
+      els.amount.textContent = formatNumber(rounded, country.locale);
+      els.cents.textContent  = '';
+      els.usdSide.style.visibility = 'visible';
+      els.usdSide.textContent = '(~$' + BASE_USD.toFixed(2) + ' USD)';
+      var oldRounded = smartRound(OLD_USD * country.rate);
+      els.oldPrice.textContent = country.symbol + formatNumber(oldRounded, country.locale);
+    }
+
+    try { localStorage.setItem('preferredCountry', country.code); } catch (e) {}
+  }
+
+  function buildCountryList(selectedCode) {
+    els.list.innerHTML = '';
+    COUNTRIES.forEach(function(c) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'country-option' + (c.code === selectedCode ? ' selected' : '');
+      btn.setAttribute('role', 'option');
+      btn.innerHTML = '<span class="opt-flag">' + (FLAGS[c.code] || '') + '</span><span class="opt-name">' + c.name + '</span><span class="opt-code">' + c.currency + '</span>';
+      btn.addEventListener('click', function() { applyCountry(c); closeList(); buildCountryList(c.code); });
+      els.list.appendChild(btn);
+    });
+  }
+
+  function openList() { els.list.hidden = false; els.pickerBtn.setAttribute('aria-expanded', 'true'); }
+  function closeList() { els.list.hidden = true; els.pickerBtn.setAttribute('aria-expanded', 'false'); }
+
+  els.pickerBtn.addEventListener('click', function(e) { e.stopPropagation(); if (els.list.hidden) openList(); else closeList(); });
+  document.addEventListener('click', function(e) { if (!els.list.contains(e.target) && e.target !== els.pickerBtn) closeList(); });
+
+  function init(countryCode) { var country = byCode(countryCode); applyCountry(country); buildCountryList(country.code); }
+
+  var saved = null;
+  try { saved = localStorage.getItem('preferredCountry'); } catch (e) {}
+  if (saved && byCode(saved).code === saved) { init(saved); return; }
+
+  var detected = false;
+  var timeoutId = setTimeout(function() { if (!detected) init('US'); }, 1800);
+
+  fetch('https://ipapi.co/json/')
+    .then(function(r) { return r.ok ? r.json() : null; })
+    .then(function(data) {
+      detected = true;
+      clearTimeout(timeoutId);
+      var code = (data && data.country_code) ? data.country_code.toUpperCase() : 'US';
+      var match = COUNTRIES.find(function(c) { return c.code === code; });
+      init(match ? code : 'US');
+    })
+    .catch(function() { detected = true; clearTimeout(timeoutId); init('US'); });
+})();
+</script>
+
+</body>
+</html>
