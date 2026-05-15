@@ -231,6 +231,64 @@
   .price-bridge .arrow { color: var(--gold-light); font-size: 14px; margin: 0 4px; animation: bridgeArrow 1.5s ease-in-out infinite; display: inline-block; }
   .price-bridge.hidden { display: none; }
   @keyframes bridgeArrow { 0%, 100% { transform: translateY(0); opacity: 0.6; } 50% { transform: translateY(3px); opacity: 1; } }
+
+  /* ============== ESCONDE IFRAME MUNDPAY (off-screen, mas interativo) ============== */
+  [data-mndpay-render] {
+    position: absolute !important;
+    left: -9999px !important;
+    top: 0 !important;
+    width: 560px !important;
+    /* iframe MANTÉM dimensões normais e visibility visible — pra .click() programático funcionar */
+  }
+  .mp-custom-buttons {
+    display: flex; flex-direction: column; gap: 12px; align-items: center;
+    margin-top: 8px;
+  }
+  .mp-btn-yes {
+    display: block;
+    background: linear-gradient(135deg, #F8E5B0 0%, #C9A84C 100%);
+    color: #160E08; font-family: 'Cinzel', serif;
+    font-size: clamp(15px, 2.3vw, 20px); font-weight: 900;
+    padding: 20px 32px; border-radius: 6px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    box-shadow: 0 8px 30px rgba(212,169,61,0.5), 0 0 0 1px rgba(255,245,224,0.5), inset 0 1px 0 rgba(255,255,255,0.45);
+    transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    width: 100%; max-width: 560px;
+    position: relative; overflow: hidden;
+    border: none; cursor: pointer;
+    animation: mpBtnGlow 3.5s ease-in-out infinite;
+    text-align: center;
+  }
+  .mp-btn-yes::before {
+    content: ''; position: absolute; top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+    animation: mpBtnShimmer 3s infinite 1.5s;
+    pointer-events: none;
+  }
+  .mp-btn-yes:hover { transform: translateY(-2px) scale(1.01); box-shadow: 0 14px 44px rgba(212,169,61,0.7), 0 0 0 1px rgba(255,245,224,0.7), inset 0 1px 0 rgba(255,255,255,0.3); }
+  .mp-btn-yes:disabled { opacity: 0.6; cursor: wait; }
+  .mp-btn-yes .btn-star { color: #FFFFFF; text-shadow: 0 1px 2px rgba(0,0,0,0.45), 0 0 12px rgba(255,255,255,0.4); font-weight: 900; }
+  .mp-btn-yes-sub {
+    display: block; font-family: 'Lora', serif; font-size: 12px;
+    font-weight: 400; font-style: italic; margin-top: 4px;
+    opacity: 0.9; letter-spacing: 0; color: #1d1408; text-transform: none;
+  }
+  @keyframes mpBtnShimmer { 0% { left: -100%; } 60% { left: 200%; } 100% { left: 200%; } }
+  @keyframes mpBtnGlow {
+    0%, 100% { box-shadow: 0 8px 30px rgba(212,169,61,0.5), 0 0 0 1px rgba(255,245,224,0.4), inset 0 1px 0 rgba(255,255,255,0.25); }
+    50%      { box-shadow: 0 10px 40px rgba(212,169,61,0.7), 0 0 0 1px rgba(255,245,224,0.6), inset 0 1px 0 rgba(255,255,255,0.3); }
+  }
+  .mp-btn-no {
+    display: inline-block;
+    background: transparent; color: #8E7C66;
+    font-family: 'Lora', serif; font-size: 13px;
+    font-style: italic; text-decoration: underline;
+    padding: 10px 16px; border: none; cursor: pointer;
+    transition: color 0.2s; margin-top: 6px;
+  }
+  .mp-btn-no:hover { color: var(--cream); }
+
 </style>
 </head>
 <body>
@@ -386,6 +444,15 @@
     </p>
 
     <div class="price-cta-wrap">
+            <div class="mp-custom-buttons">
+        <button type="button" class="mp-btn-yes" id="mpYes">
+          ✦ SÍ — MI ÁNGEL ME GUIÓ HASTA AQUÍ, QUIERO RECIBIRLO ✦
+          <span class="mp-btn-yes-sub">Pago seguro · Acceso instantáneo · Garantía total</span>
+        </button>
+        <button type="button" class="mp-btn-no" id="mpNo">
+          No, ignoro el llamado de mi ángel
+        </button>
+      </div>
       <div data-mndpay-render="019e28a4-d074-73b0-9d4e-e4c35c950675"></div>
     </div>
   </div>
@@ -507,5 +574,45 @@
 })();
 </script>
 
+
+<script>
+  (function() {
+    var HASH = '019e28a4-d074-73b0-9d4e-e4c35c950675';
+    var btnYes = document.getElementById('mpYes');
+    var btnNo  = document.getElementById('mpNo');
+
+    function triggerMundpay(action, btn) {
+      // Espera iframe ficar pronto
+      var tries = 0;
+      function attempt() {
+        var iframe = document.querySelector('[data-mndpay-iframe="' + HASH + '"]');
+        if (iframe) {
+          try {
+            var innerBtn = iframe.contentDocument && iframe.contentDocument.querySelector('[data-action="' + action + '"]');
+            if (innerBtn) { innerBtn.click(); return; }
+          } catch (e) { /* cross-origin */ }
+          // Fallback: postMessage direto
+          var msg = { type: 'mndpay_upsell_action', action: action, hash: HASH, _ts: Date.now() };
+          window.postMessage(msg, '*');
+          return;
+        }
+        if (tries++ < 30) setTimeout(attempt, 100);
+      }
+      attempt();
+    }
+
+    if (btnYes) btnYes.addEventListener('click', function() {
+      btnYes.disabled = true;
+      btnYes.innerHTML = '<span class="mp-btn-yes-sub" style="font-size:14px;">Procesando...</span>';
+      triggerMundpay('accept', btnYes);
+    });
+    if (btnNo) btnNo.addEventListener('click', function(e) {
+      e.preventDefault();
+      btnNo.style.opacity = '0.5';
+      btnNo.textContent = 'Redirigiendo...';
+      triggerMundpay('decline', btnNo);
+    });
+  })();
+</script>
 </body>
 </html>
