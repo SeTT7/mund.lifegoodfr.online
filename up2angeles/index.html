@@ -215,6 +215,10 @@
   .country-option .opt-name { flex: 1; }
   .country-option .opt-code { color: var(--gold); font-family: 'Cinzel', serif; font-weight: 700; font-size: 12px; letter-spacing: 1.5px; }
   @media (max-width: 480px) { .price-grid { grid-template-columns: 1fr; justify-items: center; gap: 12px; } .country-picker { padding: 8px 12px; font-size: 12px; } }
+  .price-bridge { text-align: center; font-family: 'Lora', serif; font-size: 12.5px; font-style: italic; color: rgba(248,229,176,0.75); letter-spacing: 0.4px; margin: 10px 0 14px; line-height: 1.4; }
+  .price-bridge .arrow { color: var(--gold-light); font-size: 14px; margin: 0 4px; animation: bridgeArrow 1.5s ease-in-out infinite; display: inline-block; }
+  .price-bridge.hidden { display: none; }
+  @keyframes bridgeArrow { 0%, 100% { transform: translateY(0); opacity: 0.6; } 50% { transform: translateY(3px); opacity: 1; } }
 </style>
 </head>
 <body>
@@ -327,6 +331,10 @@
 
     <p class="price-tag">Oferta exclusiva única · No disponible en ningún otro lugar</p>
 
+    <p class="price-bridge" id="priceBridge">
+      <span class="arrow">↓</span> El cobro abajo se procesa en dólares (USD) <span class="arrow">↓</span>
+    </p>
+
     <div class="price-cta-wrap">
       <div data-mndpay-render="019e28a9-8bfd-7275-aac6-bc08079abaa9"></div>
     </div>
@@ -390,12 +398,14 @@
       els.amount.textContent = s.whole;
       els.cents.textContent  = s.cents;
       els.usdSide.style.visibility = 'hidden';
+      var br = document.getElementById('priceBridge'); if (br) br.classList.add('hidden');
       els.oldPrice.textContent = '$' + OLD_USD.toFixed(2);
     } else {
       els.symbol.textContent = country.symbol;
       els.amount.textContent = formatNumber(rounded, country.locale);
       els.cents.textContent  = '';
       els.usdSide.style.visibility = 'visible';
+      var br = document.getElementById('priceBridge'); if (br) br.classList.remove('hidden');
       els.usdSide.textContent = '(~$' + BASE_USD.toFixed(2) + ' USD)';
       var oldRounded = smartRound(OLD_USD * country.rate);
       els.oldPrice.textContent = country.symbol + formatNumber(oldRounded, country.locale);
