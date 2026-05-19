@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<title>O Chamado do Meu Anjo — Mais Um Passo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+<script src="https://upsell.mundpay.com/script-v2.js" defer async></script>
+
+<style>
+  :root {
+    color-scheme: dark;
+    --gold: #F8E5B0;
+    --gold-light: #FFF5E0;
+    --gold-dark: #8B6914;
+    --red: #C0392B;
+    --red-bright: #E74C3C;
+    --green: #2BAC22;
+    --green-light: #5BD150;
+    --dark: #160E08;
+    --dark2: #1F1408;
+    --cream: #F5F0E8;
+    --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { min-height: 100%; }
+  body {
+    font-family: 'Lora', Georgia, serif;
+    background: radial-gradient(ellipse at 50% 0%, #2A1908 0%, #160E08 60%);
+    color: var(--cream);
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 1; opacity: 0.4;
+  }
+  .urgency-bar {
+    background: var(--red); text-align: center; padding: 12px 20px;
+    font-family: 'Cinzel', serif; font-size: clamp(12px, 2vw, 14px);
+    font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: white; position: relative; z-index: 10;
+    animation: pulse-bar 2s ease-in-out infinite;
+  }
+  @keyframes pulse-bar { 0%, 100% { background: var(--red); } 50% { background: #8B0000; } }
+  .container {
+    position: relative; z-index: 2;
+    max-width: 760px; margin: 0 auto; padding: 50px 24px 60px;
+  }
+  .rays {
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 100%; max-width: 800px; height: 280px;
+    pointer-events: none; opacity: 0.07; z-index: 1;
+  }
+  .eyebrow {
+    text-align: center;
+    font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 5px;
+    color: var(--gold); text-transform: uppercase; margin-bottom: 18px;
+    text-shadow: 0 0 8px rgba(245,220,145,0.85), 0 0 20px rgba(240,208,128,0.4);
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.15s;
+  }
+  h1 {
+    text-align: center;
+    font-family: 'Cinzel', serif; font-size: clamp(26px, 4.5vw, 42px);
+    font-weight: 900; line-height: 1.2; color: var(--white);
+    margin-bottom: 18px; letter-spacing: 0.5px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.3s;
+  }
+  h1 .gold { color: var(--gold-light); }
+  .lead {
+    text-align: center;
+    font-size: clamp(15px, 2.2vw, 19px); color: #EDDDC0;
+    font-style: italic; max-width: 640px; margin: 0 auto 28px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.45s;
+  }
+  h2 {
+    font-family: 'Cinzel', serif; font-size: clamp(20px, 3vw, 28px);
+    font-weight: 900; line-height: 1.25; color: var(--gold-light);
+    text-align: center; margin: 50px 0 18px; letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(245,220,145,0.4);
+  }
+  p {
+    font-size: clamp(15px, 1.9vw, 17px); line-height: 1.85;
+    color: #EDDDC0; margin-bottom: 18px;
+  }
+  p strong { color: var(--white); font-weight: 600; }
+  p .highlight { color: var(--gold-light); font-style: italic; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .star-divider {
+    display: flex; align-items: center; justify-content: center;
+    gap: 16px; margin: 30px auto 36px; max-width: 480px;
+  }
+  .star-divider::before, .star-divider::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-dark), transparent);
+  }
+  .star-divider span { color: var(--gold); font-size: 18px; }
+
+  .warning-box {
+    background: linear-gradient(135deg, #1B130A 0%, #221708 100%);
+    border: 1px solid var(--gold-dark);
+    border-left: 4px solid var(--red);
+    border-radius: 8px;
+    padding: 26px 28px;
+    margin: 30px auto 36px;
+    max-width: 680px;
+    box-shadow: 0 0 60px rgba(201,168,76,0.18), 0 18px 50px rgba(0,0,0,0.55);
+  }
+  .warning-title {
+    font-family: 'Cinzel', serif; font-size: clamp(15px, 2.2vw, 18px);
+    color: var(--red-bright); letter-spacing: 2px; text-transform: uppercase;
+    font-weight: 700; margin-bottom: 14px;
+    text-align: center;
+  }
+  .warning-step {
+    font-family: 'Cinzel', serif; font-size: clamp(20px, 3vw, 28px);
+    font-weight: 900; color: var(--gold-light); margin-bottom: 14px;
+    text-shadow: 0 0 8px rgba(245,220,145,0.85), 0 0 20px rgba(240,208,128,0.4);
+    text-align: center;
+  }
+  .warning-text {
+    font-size: 16px; line-height: 1.75; color: #EDDDC0;
+    text-align: center;
+  }
+
+  .feature-list {
+    background: linear-gradient(135deg, #1B130A 0%, #221708 100%);
+    border: 1px solid rgba(201,168,76,0.32);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin: 22px 0 30px;
+    list-style: none;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+  }
+  .feature-list li {
+    padding: 9px 0; font-size: clamp(15px, 2vw, 17px);
+    line-height: 1.6; color: #EDDDC0;
+    border-bottom: 1px dashed rgba(201,168,76,0.15);
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .feature-list li:last-child { border-bottom: none; }
+  .feature-list li .icon {
+    flex-shrink: 0; color: var(--gold-light);
+    font-weight: 700; font-size: 18px; line-height: 1.5;
+  }
+
+  .price-box {
+    margin: 50px auto 30px;
+    max-width: 620px;
+    background: linear-gradient(135deg, #15100A 0%, #1A1208 100%);
+    border: 2px solid var(--gold-dark);
+    border-radius: 10px;
+    padding: 36px 28px 32px;
+    text-align: center;
+    box-shadow: 0 0 80px rgba(201,168,76,0.22), 0 25px 60px rgba(0,0,0,0.85);
+  }
+  .price-eyebrow {
+    font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 5px;
+    color: var(--red-bright); text-transform: uppercase; margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(231,76,60,0.45);
+  }
+  .price-title {
+    font-family: 'Cinzel', serif; font-size: clamp(22px, 3.5vw, 30px);
+    font-weight: 900; color: var(--gold-light); letter-spacing: 2px;
+    margin-bottom: 22px;
+  }
+  .old-price {
+    font-size: 16px; color: #B0A088; font-style: italic;
+    margin-bottom: 4px;
+  }
+  .old-price span { text-decoration: line-through; color: var(--red); }
+  .new-price {
+    font-family: 'Cinzel', serif; color: var(--gold-light);
+    font-size: clamp(56px, 9vw, 86px); font-weight: 900;
+    line-height: 1; letter-spacing: -1px;
+    text-shadow: 0 0 30px rgba(240,208,128,0.5);
+    margin: 6px 0;
+  }
+  .new-price .currency { font-size: 0.55em; vertical-align: top; margin-right: 4px; }
+  .price-tag {
+    font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 3px;
+    color: var(--gold); margin-bottom: 24px; text-transform: uppercase;
+  }
+  .price-cta-wrap {
+    display: flex; flex-direction: column; gap: 12px; align-items: center;
+    margin-top: 20px;
+  }
+  [data-mndpay-render] { width: 100%; max-width: 100%; }
+
+  @media (max-width: 600px) {
+    .container { padding: 36px 16px 40px; }
+    h2 { margin: 36px 0 14px; }
+    .feature-list { padding: 20px 22px; }
+    .warning-box { padding: 20px 18px; }
+    .price-box { padding: 28px 18px 24px; }
+  }
+
+ .country-picker { padding: 8px 12px; font-size: 12px; } }
+  .price-bridge { text-align: center; font-family: 'Lora', serif; font-size: 12.5px; font-style: italic; color: rgba(248,229,176,0.75); letter-spacing: 0.4px; margin: 10px 0 14px; line-height: 1.4; }
+  .price-bridge .arrow { color: var(--gold-light); font-size: 14px; margin: 0 4px; animation: bridgeArrow 1.5s ease-in-out infinite; display: inline-block; }
+  .price-bridge.hidden { display: none; }
+  @keyframes bridgeArrow { 0%, 100% { transform: translateY(0); opacity: 0.6; } 50% { transform: translateY(3px); opacity: 1; } }
+
+  /* ============== ESCONDE IFRAME MUNDPAY (off-screen, mas interativo) ============== */
+  [data-mndpay-render] {
+    position: absolute !important;
+    left: -9999px !important;
+    top: 0 !important;
+    width: 560px !important;
+    /* iframe MANTÉM dimensões normais e visibility visible — pra .click() programático funcionar */
+  }
+  .mp-custom-buttons {
+    display: flex; flex-direction: column; gap: 12px; align-items: center;
+    margin-top: 8px;
+  }
+  .mp-btn-yes {
+    display: block;
+    background: linear-gradient(135deg, #F8E5B0 0%, #C9A84C 100%);
+    color: #160E08; font-family: 'Cinzel', serif;
+    font-size: clamp(15px, 2.3vw, 20px); font-weight: 900;
+    padding: 20px 32px; border-radius: 6px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    box-shadow: 0 8px 30px rgba(212,169,61,0.5), 0 0 0 1px rgba(255,245,224,0.5), inset 0 1px 0 rgba(255,255,255,0.45);
+    transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    width: 100%; max-width: 560px;
+    position: relative; overflow: hidden;
+    border: none; cursor: pointer;
+    animation: mpBtnGlow 3.5s ease-in-out infinite;
+    text-align: center;
+  }
+  .mp-btn-yes::before {
+    content: ''; position: absolute; top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+    animation: mpBtnShimmer 3s infinite 1.5s;
+    pointer-events: none;
+  }
+  .mp-btn-yes:hover { transform: translateY(-2px) scale(1.01); box-shadow: 0 14px 44px rgba(212,169,61,0.7), 0 0 0 1px rgba(255,245,224,0.7), inset 0 1px 0 rgba(255,255,255,0.3); }
+  .mp-btn-yes:disabled { opacity: 0.6; cursor: wait; }
+  .mp-btn-yes .btn-star { color: #FFFFFF; text-shadow: 0 1px 2px rgba(0,0,0,0.45), 0 0 12px rgba(255,255,255,0.4); font-weight: 900; }
+  .mp-btn-yes-sub {
+    display: block; font-family: 'Lora', serif; font-size: 12px;
+    font-weight: 400; font-style: italic; margin-top: 4px;
+    opacity: 0.9; letter-spacing: 0; color: #1d1408; text-transform: none;
+  }
+  @keyframes mpBtnShimmer { 0% { left: -100%; } 60% { left: 200%; } 100% { left: 200%; } }
+  @keyframes mpBtnGlow {
+    0%, 100% { box-shadow: 0 8px 30px rgba(212,169,61,0.5), 0 0 0 1px rgba(255,245,224,0.4), inset 0 1px 0 rgba(255,255,255,0.25); }
+    50%      { box-shadow: 0 10px 40px rgba(212,169,61,0.7), 0 0 0 1px rgba(255,245,224,0.6), inset 0 1px 0 rgba(255,255,255,0.3); }
+  }
+  .mp-btn-no {
+    display: inline-block;
+    background: transparent; color: #8E7C66;
+    font-family: 'Lora', serif; font-size: 13px;
+    font-style: italic; text-decoration: underline;
+    padding: 10px 16px; border: none; cursor: pointer;
+    transition: color 0.2s; margin-top: 6px;
+  }
+  .mp-btn-no:hover { color: var(--cream); }
+
+</style>
+</head>
+<body>
+
+<div class="urgency-bar">
+  ✦ &nbsp; SEU PEDIDO NÃO ESTÁ COMPLETO — NÃO FECHE ESTA PÁGINA &nbsp; ✦
+</div>
+
+<div class="container">
+  <svg class="rays" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(400,0)">
+      <line x1="0" y1="0" x2="-400" y2="280" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="-260" y2="280" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="-130" y2="280" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="0"    y2="280" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="130"  y2="280" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="260"  y2="280" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="400"  y2="280" stroke="#C9A84C" stroke-width="1"/>
+    </g>
+  </svg>
+
+  <p class="eyebrow">✦ Os Céus Te Ouviram ✦</p>
+  <h1>🎉 Parabéns por tomar a decisão mais importante <span class="gold">para mudar sua vida.</span></h1>
+  <p class="lead">Este é o momento exato em que tudo começa a mudar a seu favor.</p>
+
+  <div class="star-divider"><span>★</span></div>
+
+  <div class="warning-box">
+    <p class="warning-title">⚠ Seu pedido ainda não está completo — não abandone esta página.</p>
+    <p class="warning-step">Apenas Mais Um Passo...</p>
+    <p class="warning-text">Você está a segundos de descobrir o <strong style="color:var(--white);">ritual oculto</strong> usado por milionários em todo o mundo.</p>
+  </div>
+
+  <h2>✦ Eles Sempre Souberam, Mas Nunca Quiseram Que Você Descobrisse</h2>
+  <p>
+    As <strong>7 Leis Herméticas</strong> não funcionam como te ensinaram, e é por isso que você nunca ficou rico.
+  </p>
+  <p>
+    <strong>Obama, Beyoncé, Musk, Joe Dispenza, até o Papa</strong> — todos desbloquearam a versão oculta dessas leis. E por isso a riqueza, a fama e o poder fluem para eles sem esforço.
+  </p>
+  <p>
+    Agora é <span class="highlight">a sua vez</span>. Se você chegou até aqui, não foi por acaso. Seu anjo está te guiando para algo ainda maior.
+  </p>
+
+  <h2>O Código Sagrado do Padre Pio</h2>
+  <p>
+    Existe um <strong>código sagrado</strong>, oculto durante séculos, invisível até para os mais fiéis. O <strong>Padre Pio</strong> certa vez o revelou para ajudar a humanidade. Mas se perdeu no tempo...
+  </p>
+  <p>
+    Até que nomes como <strong>Spielberg</strong> e <strong>Will Smith</strong> o encontraram novamente e o guardaram dentro de um círculo secreto da elite mundial.
+  </p>
+  <p>
+    O código completo proibido nunca pôde ser compartilhado publicamente — nem mesmo no primeiro passo. Mas como você ainda está aqui, provou que <span class="highlight">não é como os outros</span>. Está preparado e é digno.
+  </p>
+  <p>
+    E é apenas para pessoas como você que revelamos o que vem a seguir. Porque apenas aqueles mais próximos da luz já acessaram isso.
+  </p>
+
+  <div class="star-divider"><span>★</span></div>
+
+  <h2>🔥 Dobre a Realidade a Seu Favor</h2>
+  <p>
+    Você tomou a decisão certa. <strong>O Chamado do Meu Anjo</strong> que você acabou de receber já vai desbloquear prosperidade para você nos próximos dias.
+  </p>
+  <p>
+    Mas quando combinado com esta <strong>atualização proibida</strong>, os efeitos começam em menos de <span class="highlight">24 horas</span> e vão muito mais fundo.
+  </p>
+  <p>
+    Você não apenas <em>atrairá</em> a riqueza — <strong>dobrará a realidade a seu favor.</strong>
+  </p>
+  <p>
+    Não desperdice esta oportunidade. Você só consegue agora, e se sair desta página, não terá outra.
+  </p>
+
+  <h2>💎 O Que Você Vai Desbloquear</h2>
+  <ul class="feature-list">
+    <li><span class="icon">✦</span><span>Como ativar as <strong>7 leis ocultas</strong> para que o dinheiro te persiga</span></li>
+    <li><span class="icon">✦</span><span>O código exato que as celebridades da elite usam para <strong>dobrar a realidade</strong> a seu favor</span></li>
+    <li><span class="icon">✦</span><span>Um ritual de <strong>7 dias</strong> para desbloquear transferências de dinheiro inesperadas</span></li>
+    <li><span class="icon">✦</span><span>A <strong>brutal diferença</strong> entre o Kybalión que você conhece e o que a elite usa</span></li>
+    <li><span class="icon">✦</span><span>Tão simples que você só precisa de <strong>5 minutos antes de dormir</strong> — e em 24 horas começará a ver os sinais</span></li>
+  </ul>
+
+  <h2>⚠ Te Ensinaram Errado, e Você Acreditou</h2>
+  <p>
+    Você repetiu afirmações, visualizou, meditou — mas o dinheiro <em>nunca chegou</em>.
+  </p>
+  <p>
+    <strong>Não é sua culpa. É culpa deles.</strong> Te ocultaram a verdade.
+  </p>
+  <p>
+    Mas <strong>Barack Obama</strong> sabia. <strong>Beyoncé</strong> também. E <strong>Joe Dispenza</strong>? É o cientista escolhido pela elite para explicar como dobrar o campo quântico com essas leis ocultas.
+  </p>
+  <p>
+    Não falam disso publicamente — mas usam em silêncio.
+  </p>
+
+  <h2>📜 A Versão Proibida do Kybalión</h2>
+  <p>
+    O que você está prestes a acessar é a <strong>versão proibida do Kybalión</strong>. Não a que está nas livrarias nem nos vídeos do YouTube.
+  </p>
+  <p>
+    Este é o código <span class="highlight">real</span> — o que verdadeiramente ativa as leis do mundo invisível.
+  </p>
+  <p>
+    Milhares já relatam dinheiro aparecendo do nada, pessoas ricas surgindo do ar, oportunidades que parecem <em>orquestradas por algo invisível</em>.
+  </p>
+
+  <h2>🌅 Imagine Acordar Assim</h2>
+  <p>
+    Imagine isso: acordar com <strong>depósitos inesperados no PayPal</strong>, pessoas que antes te ignoravam agora te perseguindo com ofertas, e você — <span class="highlight">segurando a chave</span> — dobrando sua própria realidade.
+  </p>
+  <p>
+    A primeira parte foi o despertar. Agora seu anjo está te entregando a <strong>chave sagrada</strong> que os santos protegeram.
+  </p>
+  <p>
+    <strong>As 7 Leis Herméticas Que Convertem a Oração em Manifestação Visível e Imparável.</strong>
+  </p>
+  <p>
+    Não é coincidência. Aqui é onde os milagres se tornam realidade. Você só precisa de <strong>5 minutos antes de dormir</strong>, e em 24 horas começará a ver os sinais.
+  </p>
+
+  <div class="warning-box" style="border-left-color: var(--gold);">
+    <p class="warning-title" style="color: var(--gold-light);">⚠ Uma Única Oportunidade</p>
+    <p class="warning-text">
+      Uma vez visto, isso <strong style="color: var(--white);">não pode ser des-visto</strong>. Feche esta aba, e desaparecerá para sempre.<br>
+      <strong style="color: var(--red-bright);">Não há botão de voltar. Não há segundas chances.</strong>
+    </p>
+  </div>
+
+  <div class="price-box">
+    <p class="price-eyebrow">🔥 Só Hoje — Página Secreta Aberta</p>
+    <p class="price-title">As 7 Leis do Kybalión Proibidas</p>
+    <p class="old-price">Normalmente: <span>R$97,00</span></p>
+    <div class="new-price"><span class="currency">R$</span><span>47</span><span>,00</span></div>
+
+    <p class="price-tag">Pagamento único · Acesso instantâneo</p>
+
+
+    <div class="price-cta-wrap">
+            <div class="mp-custom-buttons">
+        <button type="button" class="mp-btn-yes" id="mpYes">
+          ✦ SIM — MEU ANJO ME GUIOU ATÉ AQUI, QUERO RECEBER ✦
+          <span class="mp-btn-yes-sub">Pagamento seguro · Acesso instantâneo · Garantia total</span>
+        </button>
+        <button type="button" class="mp-btn-no" id="mpNo">
+          Não, ignoro o chamado do meu anjo
+        </button>
+      </div>
+      <div data-mndpay-render="019e28a4-d074-73b0-9d4e-e4c35c950675"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var HASH = '019e28a4-d074-73b0-9d4e-e4c35c950675';
+    var btnYes = document.getElementById('mpYes');
+    var btnNo  = document.getElementById('mpNo');
+
+    function triggerMundpay(action, btn) {
+      // Espera iframe ficar pronto
+      var tries = 0;
+      function attempt() {
+        var iframe = document.querySelector('[data-mndpay-iframe="' + HASH + '"]');
+        if (iframe) {
+          try {
+            var innerBtn = iframe.contentDocument && iframe.contentDocument.querySelector('[data-action="' + action + '"]');
+            if (innerBtn) { innerBtn.click(); return; }
+          } catch (e) { /* cross-origin */ }
+          // Fallback: postMessage direto
+          var msg = { type: 'mndpay_upsell_action', action: action, hash: HASH, _ts: Date.now() };
+          window.postMessage(msg, '*');
+          return;
+        }
+        if (tries++ < 30) setTimeout(attempt, 100);
+      }
+      attempt();
+    }
+
+    if (btnYes) btnYes.addEventListener('click', function() {
+      btnYes.disabled = true;
+      btnYes.innerHTML = '<span class="mp-btn-yes-sub" style="font-size:14px;">Processando...</span>';
+      triggerMundpay('accept', btnYes);
+    });
+    if (btnNo) btnNo.addEventListener('click', function(e) {
+      e.preventDefault();
+      btnNo.style.opacity = '0.5';
+      btnNo.textContent = 'Redirecionando...';
+      triggerMundpay('decline', btnNo);
+    });
+  })();
+</script>
+</body>
+</html>
