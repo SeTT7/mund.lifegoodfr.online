@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offre Spéciale</title>
+  <script src="https://upsell.mundpay.com/script-v2.js" defer async></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #f5f5f5;
+      font-family: Arial, sans-serif;
+      color: #1a1a1a;
+    }
+
+    /* Barra de atenção */
+    .attention-bar {
+      background: #cc0000;
+      color: #fff;
+      text-align: center;
+      padding: 12px 16px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      animation: pulse-bar 2s ease-in-out infinite;
+    }
+
+    .attention-bar::before {
+      content: "⚠️ ";
+    }
+
+    @keyframes pulse-bar {
+      0%, 100% { background: #cc0000; }
+      50%       { background: #a80000; }
+    }
+
+    /* Container principal */
+    .page-wrap {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    /* VSL */
+    .vsl-wrap {
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 32px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    vturb-smartplayer {
+      display: block;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    /* Bloco de oferta — escondido até os 6:35 */
+    #offer-block {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    #offer-block.visible {
+      display: block;
+      opacity: 1;
+    }
+
+    .offer-label {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="attention-bar">
+    Attention : ne pas fermer ou actualiser cette page !
+  </div>
+
+  <div class="page-wrap">
+
+    <!-- VSL -->
+    <div class="vsl-wrap">
+      <vturb-smartplayer id="vid-6a8732665ad4bda4d2f04530" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;">
+        <div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 178.21782178217822% 0 0; z-index: 0; background-color: black;"></div>
+      </vturb-smartplayer>
+      <script type="text/javascript">
+        var s = document.createElement("script");
+        s.src = "https://scripts.converteai.net/4d063052-ebb4-4a44-96e2-84dbb61688f2/players/6a8732665ad4bda4d2f04530/v4/player.js";
+        s.async = !0;
+        document.head.appendChild(s);
+      </script>
+    </div>
+
+    <!-- Oferta Mundpay — aparece após 6m35s -->
+    <div id="offer-block">
+      <div class="offer-label">Offre exclusive réservée pour vous</div>
+      <div data-mndpay-render="019a1287-f803-71df-af87-e3ac1ec10619"></div>
+    </div>
+
+  </div>
+
+  <script>
+    // 6 minutos e 35 segundos = 395 000 ms
+    setTimeout(function () {
+      var block = document.getElementById('offer-block');
+      block.style.display = 'block';
+      // força reflow para a transição de opacidade funcionar
+      void block.offsetWidth;
+      block.classList.add('visible');
+      block.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 395000);
+  </script>
+
+</body>
+</html>
