@@ -1,113 +1,143 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "y3zh19ouqq");
+</script>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Offre Spéciale</title>
+  <title>Offre Spéciale — Prolong Power</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://upsell.mundpay.com/script-v2.js" defer async></script>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0}
+    html,body{background:#fff;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:#0A1230;line-height:1.6}
 
-    body {
-      background: #f5f5f5;
-      font-family: Arial, sans-serif;
-      color: #1a1a1a;
+    @keyframes urgent-flash{0%,100%{background:#DC2626}50%{background:#B91C1C}}
+    @keyframes fade-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes offer-reveal{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes cta-pulse{
+      0%,100%{box-shadow:0 12px 32px -8px #3B6FFFCC,0 0 0 0 #3B6FFF44,inset 0 1px 0 rgba(255,255,255,.3)}
+      50%{box-shadow:0 12px 32px -8px #3B6FFFCC,0 0 0 12px #3B6FFF00,inset 0 1px 0 rgba(255,255,255,.3)}
     }
 
-    /* Barra de atenção */
-    .attention-bar {
-      background: #cc0000;
-      color: #fff;
-      text-align: center;
-      padding: 12px 16px;
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 0.3px;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      animation: pulse-bar 2s ease-in-out infinite;
+    /* ── Attention bar ── */
+    .attention-bar{
+      width:100%;padding:11px 16px;text-align:center;
+      font-size:13px;font-weight:800;letter-spacing:.02em;color:#fff;
+      animation:urgent-flash 1.5s ease-in-out infinite;
+      position:sticky;top:0;z-index:999;
+    }
+    .attention-bar::before{content:"⚠️  "}
+
+    /* ── Header ── */
+    .top-header{width:100%;padding:14px 20px;border-bottom:1px solid #EAF0FF;text-align:center;background:#fff}
+    .top-header span{font-size:20px;font-weight:900;letter-spacing:-.03em;color:#3B6FFF}
+
+    /* ── Hero ── */
+    .hero{position:relative;overflow:hidden;padding:30px 20px 26px;text-align:center;
+      background:radial-gradient(at center top,#0A1230 0%,#050810 70%);color:#fff}
+    .badge-urgent{
+      display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;
+      margin-bottom:14px;text-transform:uppercase;letter-spacing:.04em;font-size:11px;font-weight:900;
+      animation:urgent-flash 1.5s ease-in-out infinite}
+    .hero h1{font-size:22px;font-weight:900;letter-spacing:-.03em;line-height:1.25;max-width:420px;margin:0 auto}
+
+    /* ── Layout ── */
+    .wrap{max-width:480px;margin:0 auto;padding:28px 18px 50px}
+
+    /* ── Intro ── */
+    .intro-text p{font-size:14px;color:#444;margin-bottom:13px}
+    .hl{font-weight:700;color:#0A1230}
+
+    /* ── VSL card ── */
+    .vsl-card{
+      background:#fff;border:1px solid #EAF0FF;border-radius:20px;overflow:hidden;
+      box-shadow:0 8px 32px -8px rgba(59,111,255,.15);margin:24px 0;
+    }
+    .vsl-card vturb-smartplayer{display:block;width:100% !important;max-width:100% !important;}
+
+    /* ── Section title ── */
+    .section-title{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;
+      color:#3B6FFF;text-align:center;margin:28px 0 16px}
+
+    /* ── Divider ── */
+    .divider{height:1px;background:linear-gradient(90deg,transparent,#EAF0FF,transparent);margin:24px 0}
+
+    /* ── Value list ── */
+    .value-list{list-style:none;padding:0;margin:0 0 18px}
+    .value-list li{font-size:13px;color:#444;padding:7px 0;border-bottom:1px solid #F0F2F8;display:flex;align-items:flex-start;gap:8px}
+    .value-list li:last-child{border-bottom:none}
+    .value-list li::before{content:'✦';color:#3B6FFF;font-size:11px;flex-shrink:0;margin-top:2px}
+
+    /* ── Offer block (hidden until 6:35) ── */
+    #offer-block{
+      display:none;
+      animation:offer-reveal .7s ease both;
+    }
+    #offer-block.visible{display:block}
+
+    .offer-label{
+      text-align:center;background:#EAF0FF;border-radius:12px;
+      padding:10px 16px;font-size:12px;font-weight:800;color:#3B6FFF;
+      text-transform:uppercase;letter-spacing:.06em;margin-bottom:20px;
     }
 
-    .attention-bar::before {
-      content: "⚠️ ";
-    }
+    /* ── Guarantee ── */
+    .guarantee{background:#EAF0FF;border-radius:16px;padding:20px;margin-top:20px}
+    .guarantee-title{font-size:14px;font-weight:800;color:#0A1230;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .guarantee p{font-size:12px;color:#1A2547;line-height:1.6}
 
-    @keyframes pulse-bar {
-      0%, 100% { background: #cc0000; }
-      50%       { background: #a80000; }
+    /* ── Waiting hint ── */
+    .waiting-hint{
+      text-align:center;padding:20px;
+      font-size:13px;color:#8895A7;
     }
-
-    /* Container principal */
-    .page-wrap {
-      max-width: 480px;
-      margin: 0 auto;
-      padding: 24px 16px 48px;
-    }
-
-    /* VSL */
-    .vsl-wrap {
-      background: #000;
-      border-radius: 12px;
-      overflow: hidden;
-      margin-bottom: 32px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    }
-
-    vturb-smartplayer {
-      display: block;
-      width: 100% !important;
-      max-width: 100% !important;
-    }
-
-    /* Bloco de oferta — escondido até os 6:35 */
-    #offer-block {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.6s ease;
-    }
-
-    #offer-block.visible {
-      display: block;
-      opacity: 1;
-    }
-
-    .offer-label {
-      text-align: center;
-      font-size: 13px;
-      font-weight: 700;
-      color: #888;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 16px;
-    }
+    .waiting-hint strong{color:#0A1230;display:block;font-size:15px;font-weight:800;margin-bottom:6px}
   </style>
 </head>
 <body>
 
-  <div class="attention-bar">
-    Attention : ne pas fermer ou actualiser cette page !
+  <!-- Attention bar -->
+  <div class="attention-bar">Attention : ne pas fermer ou actualiser cette page !</div>
+
+  <!-- Header -->
+  <div class="top-header"><span>Prolong Power</span></div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <span class="badge-urgent">⚠️ Offre unique</span>
+    <h1>UNE SEULE CHANCE D'OBTENIR CETTE OFFRE EXCLUSIVE</h1>
   </div>
 
-  <div class="page-wrap">
+  <div class="wrap">
 
     <!-- VSL -->
-    <div class="vsl-wrap">
-      <vturb-smartplayer id="vid-6a8732665ad4bda4d2f04530" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;">
-        <div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 178.21782178217822% 0 0; z-index: 0; background-color: black;"></div>
+    <div class="vsl-card">
+      <vturb-smartplayer id="vid-6a8732665ad4bda4d2f04530" style="display:block;margin:0 auto;width:100%;max-width:400px;">
+        <div class="vturb-player-placeholder" style="position:relative;width:100%;padding:178.21782178217822% 0 0;z-index:0;background-color:black;"></div>
       </vturb-smartplayer>
       <script type="text/javascript">
-        var s = document.createElement("script");
-        s.src = "https://scripts.converteai.net/4d063052-ebb4-4a44-96e2-84dbb61688f2/players/6a8732665ad4bda4d2f04530/v4/player.js";
-        s.async = !0;
-        document.head.appendChild(s);
+        var s=document.createElement("script");
+        s.src="https://scripts.converteai.net/4d063052-ebb4-4a44-96e2-84dbb61688f2/players/6a8732665ad4bda4d2f04530/v4/player.js";
+        s.async=!0;document.head.appendChild(s);
       </script>
     </div>
 
-    <!-- Oferta Mundpay — aparece após 6m35s -->
+    <!-- Oferta Mundpay — aparece após 6:35 -->
     <div id="offer-block">
-      <div class="offer-label">Offre exclusive réservée pour vous</div>
+      <div class="offer-label">🔒 Offre exclusive — disponible maintenant</div>
       <div data-mndpay-render="019a1287-f803-71df-af87-e3ac1ec10619"></div>
+
+      <!-- Garantia -->
+      <div class="guarantee">
+        <p class="guarantee-title">🛡️ Garantie 30 jours — Risque zéro</p>
+        <p>Essayez pendant 30 jours complets. Si pour une raison quelconque vous n'êtes pas satisfait, nous vous remboursons 100 % de votre argent. Sans questions, sans complications.</p>
+      </div>
     </div>
 
   </div>
@@ -115,12 +145,14 @@
   <script>
     // 6 minutos e 35 segundos = 395 000 ms
     setTimeout(function () {
+      var hint = document.getElementById('waiting-hint');
+      if (hint) hint.style.display = 'none';
+
       var block = document.getElementById('offer-block');
-      block.style.display = 'block';
-      // força reflow para a transição de opacidade funcionar
-      void block.offsetWidth;
       block.classList.add('visible');
-      block.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(function () {
+        block.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
     }, 395000);
   </script>
 
