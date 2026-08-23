@@ -1,29 +1,28 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<script type="text/javascript">
+  <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "y3zh19ouqq");
-</script>
+  </script>
+  <script src="https://upsell.mundpay.com/script-v2.js" defer async></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Offre Spéciale — Prolong Power</title>
+  <title>Offre Exclusive — Prolong Power</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <script src="https://upsell.mundpay.com/script-v2.js" defer async></script>
   <style>
     *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0}
     html,body{background:#fff;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:#0A1230;line-height:1.6}
 
-    @keyframes urgent-flash{0%,100%{background:#DC2626}50%{background:#B91C1C}}
-    @keyframes fade-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes offer-reveal{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
     @keyframes cta-pulse{
       0%,100%{box-shadow:0 12px 32px -8px #3B6FFFCC,0 0 0 0 #3B6FFF44,inset 0 1px 0 rgba(255,255,255,.3)}
       50%{box-shadow:0 12px 32px -8px #3B6FFFCC,0 0 0 12px #3B6FFF00,inset 0 1px 0 rgba(255,255,255,.3)}
     }
+    @keyframes urgent-flash{0%,100%{background:#DC2626}50%{background:#B91C1C}}
+    @keyframes fade-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
     /* ── Attention bar ── */
     .attention-bar{
@@ -50,16 +49,9 @@
     /* ── Layout ── */
     .wrap{max-width:480px;margin:0 auto;padding:28px 18px 50px}
 
-    /* ── Intro ── */
-    .intro-text p{font-size:14px;color:#444;margin-bottom:13px}
+    /* ── Copy ── */
+    .copy-block p{font-size:14px;color:#444;margin-bottom:14px;line-height:1.7}
     .hl{font-weight:700;color:#0A1230}
-
-    /* ── VSL card ── */
-    .vsl-card{
-      background:#fff;border:1px solid #EAF0FF;border-radius:20px;overflow:hidden;
-      box-shadow:0 8px 32px -8px rgba(59,111,255,.15);margin:24px 0;
-    }
-    .vsl-card vturb-smartplayer{display:block;width:100% !important;max-width:100% !important;}
 
     /* ── Section title ── */
     .section-title{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;
@@ -68,36 +60,26 @@
     /* ── Divider ── */
     .divider{height:1px;background:linear-gradient(90deg,transparent,#EAF0FF,transparent);margin:24px 0}
 
-    /* ── Value list ── */
-    .value-list{list-style:none;padding:0;margin:0 0 18px}
-    .value-list li{font-size:13px;color:#444;padding:7px 0;border-bottom:1px solid #F0F2F8;display:flex;align-items:flex-start;gap:8px}
-    .value-list li:last-child{border-bottom:none}
-    .value-list li::before{content:'✦';color:#3B6FFF;font-size:11px;flex-shrink:0;margin-top:2px}
-
-    /* ── Offer block (hidden until 6:35) ── */
-    #offer-block{
-      display:none;
-      animation:offer-reveal .7s ease both;
+    /* ── Product card ── */
+    .product-card{
+      background:#fff;border:1px solid #EAF0FF;border-radius:20px;padding:24px 20px;
+      box-shadow:0 8px 40px -12px rgba(59,111,255,.18);text-align:center;
+      animation:fade-in .4s ease both;
     }
-    #offer-block.visible{display:block}
-
-    .offer-label{
-      text-align:center;background:#EAF0FF;border-radius:12px;
-      padding:10px 16px;font-size:12px;font-weight:800;color:#3B6FFF;
-      text-transform:uppercase;letter-spacing:.06em;margin-bottom:20px;
+    .product-img{
+      width:140px;height:140px;object-fit:cover;border-radius:14px;
+      box-shadow:0 6px 20px rgba(0,0,0,.12);margin:0 auto 16px;display:block;
     }
+    .product-name{font-size:16px;font-weight:800;color:#0A1230;margin-bottom:12px}
+    .price-old{font-size:13px;color:#5A6B85;margin-bottom:4px}
+    .price-old span{text-decoration:line-through}
+    .price-new{font-size:44px;font-weight:900;color:#3B6FFF;letter-spacing:-.03em;line-height:1;margin-bottom:6px}
+    .price-sub{font-size:12px;color:#DC2626;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:20px}
 
     /* ── Guarantee ── */
     .guarantee{background:#EAF0FF;border-radius:16px;padding:20px;margin-top:20px}
     .guarantee-title{font-size:14px;font-weight:800;color:#0A1230;margin-bottom:8px;display:flex;align-items:center;gap:8px}
     .guarantee p{font-size:12px;color:#1A2547;line-height:1.6}
-
-    /* ── Waiting hint ── */
-    .waiting-hint{
-      text-align:center;padding:20px;
-      font-size:13px;color:#8895A7;
-    }
-    .waiting-hint strong{color:#0A1230;display:block;font-size:15px;font-weight:800;margin-bottom:6px}
   </style>
 </head>
 <body>
@@ -110,51 +92,147 @@
 
   <!-- Hero -->
   <div class="hero">
-    <span class="badge-urgent">⚠️ Offre unique</span>
-    <h1>UNE SEULE CHANCE D'OBTENIR CETTE OFFRE EXCLUSIVE</h1>
+    <span class="badge-urgent">⚠️ Lisez avant de continuer</span>
+    <h1>LISEZ JUSQU'À LA FIN POUR COMPLÉTER VOTRE ACHAT</h1>
   </div>
 
   <div class="wrap">
 
-    <!-- VSL -->
-    <div class="vsl-card">
-      <vturb-smartplayer id="vid-6a8732665ad4bda4d2f04530" style="display:block;margin:0 auto;width:100%;max-width:400px;">
-        <div class="vturb-player-placeholder" style="position:relative;width:100%;padding:178.21782178217822% 0 0;z-index:0;background-color:black;"></div>
-      </vturb-smartplayer>
-      <script type="text/javascript">
-        var s=document.createElement("script");
-        s.src="https://scripts.converteai.net/4d063052-ebb4-4a44-96e2-84dbb61688f2/players/6a8732665ad4bda4d2f04530/v4/player.js";
-        s.async=!0;document.head.appendChild(s);
-      </script>
+    <!-- Copy -->
+    <div class="copy-block">
+      <p>Bonjour, je tiens à vous féliciter d'avoir pris la décision intelligente de vous procurer mon <span class="hl">Prolong Power</span></p>
+
+      <p>Mais s'il vous plaît, portez une attention particulière. Pour que tout se passe bien, j'ai besoin que vous lisiez ce texte jusqu'à la fin. Veillez à ne pas fermer cette page ni appuyer sur le bouton de retour, car cela pourrait signifier la perte de votre achat.</p>
+
+      <p>Lorsque j'ai développé le <span class="hl">Prolong Power</span>, je savais que je créais quelque chose de révolutionnaire. Mon objectif était de créer une solution simple, pratique et puissante conçue pour aider les hommes à retrouver la confiance et la vitalité qu'avec le temps, beaucoup ont tendance à perdre.</p>
+
+      <p>Cette boisson fut la première étape : un mélange naturel, direct et efficace qui aide déjà d'innombrables hommes à restaurer leur vigueur et à se sentir à nouveau puissants avec leurs partenaires.</p>
+
+      <p>Mais avec le temps, quelque chose d'étonnant a commencé à se produire.</p>
+
+      <p>Vous voulez savoir quoi ? J'ai commencé à recevoir de nombreux messages et appels de patients et de clients émerveillés par les résultats de la boisson.</p>
+
+      <p>Ils ont partagé des histoires d'augmentation d'énergie, d'une impulsion qu'ils n'avaient pas ressentie depuis des années, d'une confiance renouvelée que même leurs épouses ont remarquée.</p>
+
+      <p>Cependant, certains sont revenus avec une demande curieuse : "Dr Anthony, y a-t-il quelque chose que je puisse faire pour AUGMENTER encore plus ces effets ? J'adore, mais je veux aller plus loin."</p>
+
+      <p>Ces demandes m'ont fait réfléchir.</p>
+
+      <p>Pourrais-je offrir une solution qui non seulement compléterait la boisson, mais doublerait ses effets, les amenant à un niveau entièrement nouveau ? Et devinez quoi... c'est là que j'ai commencé à développer une deuxième formule secrète.</p>
+
+      <p>Aujourd'hui, nous l'appelons <span class="hl">Protocole Prolong Power Premium</span>.</p>
+
+      <p>Ce mélange n'est pas seulement une extension de la boisson. C'EST LA COMBINAISON PARFAITE POUR POTENTIALISER SES EFFETS, offrant des résultats dès le premier jour.</p>
+
+      <p>Pensez-y comme la deuxième vitesse d'une voiture puissante. Il intensifie chaque bénéfice de la boisson originale, permettant à votre corps d'absorber et d'utiliser les nutriments de manière encore plus efficace. Vous sentirez la différence en quelques heures.</p>
+
+      <p>Imaginez ceci : <span class="hl">Protocole Prolong Power Premium</span> est un véritable "turbo". Il est conçu pour travailler avec la boisson, avec des ingrédients qui améliorent la circulation sanguine, augmentent l'endurance et élèvent vos niveaux d'énergie de manière constante.</p>
+
+      <p>Ma recherche m'a conduit à une combinaison unique d'ingrédients qui créent un effet cumulatif beaucoup plus fort.</p>
+
+      <p>Cela signifie que non seulement vous aurez plus d'énergie, mais vous impressionnerez tous ceux autour de vous avec votre vitalité renouvelée.</p>
+
+      <p>Croyez-moi ; j'ai commencé à utiliser <span class="hl">Protocole Prolong Power Premium</span> avec le <span class="hl">Prolong Power</span> sur certains de mes patients les plus exigeants, ceux qui voulaient des résultats rapides et durables. Et ce que j'ai vu était extraordinaire.</p>
+
+      <p>Des hommes déjà satisfaits de la boisson ont rapporté une transformation encore plus profonde. Ils se sentaient plus énergiques, confiants et pleins de vie, comme s'ils avaient retrouvé la vitalité qu'ils avaient à 20 ans.</p>
+
+      <p>L'un d'eux m'a même dit que ses collègues de travail avaient remarqué la différence et lui avaient demandé quel était son secret.</p>
+
+      <p>Maintenant, voici ce qui est excitant. Si vous avez déjà franchi la première étape avec le <span class="hl">Prolong Power</span> et que vous voulez vous assurer que vos résultats sont au niveau maximum, laissez-moi vous présenter <span class="hl">Protocole Prolong Power Premium</span>.</p>
+
+      <p>C'est le complément parfait, l'étape avancée du protocole qui vous amène à un autre niveau.</p>
+
+      <p>Une solution simple et pratique créée pour les hommes qui ne se contentent pas de l'ordinaire et qui sont prêts à accomplir l'extraordinaire.</p>
+
+      <p>Il est temps de montrer au monde de quoi vous êtes vraiment capable.</p>
+
+      <p>Je crois que <span class="hl">Protocole Prolong Power Premium</span> est essentiel pour quiconque a acquis le <span class="hl">Prolong Power</span>, car ensemble, ils garantiront que vous surprendrez votre partenaire au lit ce soir.</p>
+
+      <p>La combinaison des deux est le secret ultime pour rendre toute femme folle pendant les moments intimes.</p>
+
+      <p>Vous performerez pour votre partenaire avec la force et l'endurance d'un cheval puissant.</p>
+
+      <p>Mais faites attention, car voici une opportunité que vous ne voudrez pas manquer.</p>
+
+      <p>Pour un temps limité, j'offre <span class="hl">Protocole Prolong Power Premium</span> exclusivement à ceux qui ont déjà acquis le <span class="hl">Prolong Power</span>.</p>
+
+      <p>C'est votre opportunité d'amener vos résultats à un niveau que vous n'auriez jamais pensé possible.</p>
+
+      <p>Réfléchissez-y : pendant que d'autres hommes luttent contre la fatigue, la faible confiance et une vie sans énergie, vous aurez accès à une combinaison puissante qui peut transformer complètement votre vitalité et votre bien-être.</p>
+
+      <p>Et je ne parle pas d'attendre des semaines ou des mois pour remarquer une différence. Avec <span class="hl">Protocole Prolong Power Premium</span>, vous pourriez commencer à sentir les effets dans les premières 24 heures.</p>
+
+      <p>Imaginez-vous vous réveiller demain en vous sentant renouvelé, confiant et prêt à affronter n'importe quoi.</p>
+
+      <p>Mais voici la partie importante : j'ai décidé de vous offrir ce mélange comme un bonus pour avoir eu confiance en moi, et j'espère vraiment qu'à partir d'aujourd'hui, vous vivrez une transformation comme jamais auparavant.</p>
+
+      <p>Je ne veux pas que vous manquiez cette opportunité en or.</p>
+
+      <p>Et cette opportunité est unique : c'est la seule fois où vous pourrez acheter <span class="hl">Protocole Prolong Power Premium</span>, ici et maintenant.</p>
+
+      <p>Si vous quittez cette page, vous ne pourrez plus acheter ce pack complet, et honnêtement, il est essentiel pour votre protocole.</p>
+
+      <p>Et vous savez quelle est la meilleure partie ? Je suis tellement sûr des résultats de <span class="hl">Protocole Prolong Power Premium</span> que j'offre une garantie inconditionnelle de 30 jours. C'est vrai.</p>
+
+      <p>Essayez-le pendant un mois complet, et si pour une raison quelconque vous n'êtes pas entièrement satisfait, je vous rembourserai intégralement.</p>
+
+      <p>Sans questions, sans complications.</p>
+
+      <p>Maintenant, vous vous demandez peut-être : "Combien cela va-t-il me coûter ?"</p>
+
+      <p>Eh bien, compte tenu de toute la valeur que ce mélange peut ajouter à votre vie — plus d'énergie, confiance renouvelée, bien-être général amélioré — il pourrait facilement valoir des centaines de dollars.</p>
+
+      <p>Pour votre information, le <span class="hl">Protocole Prolong Power Premium</span> que j'ai développé était précédemment vendu séparément dans mon cabinet pour 797 $.</p>
+
+      <p>Après tout, je n'ai rien trouvé d'autre qui puisse aborder ce problème de performance sexuelle et augmenter l'endurance au lit.</p>
+
+      <p>Et étant donné que je suis passé par cette lutte, que je l'ai surmontée et que j'ai aidé des milliers de patients dans le monde entier, je veux vous offrir une offre hautement exclusive.</p>
+
+      <p>Bien que tout cela vaille au moins 797 $, en tant que l'un de mes patients qui obtiendra des résultats extraordinaires avec mon protocole, et qui me remerciera plus tard, je veux vous offrir <span class="hl">Protocole Prolong Power Premium</span> au coût — je ne cherche pas à faire des profits ici.</p>
+
+      <p>Seulement aujourd'hui, je vous offre une offre promotionnelle exclusive basée sur le coût pour <span class="hl">Protocole Prolong Power Premium</span>. C'est vrai, un prix réduit unique.</p>
+
+      <p>Sans frais, juste le prix de revient pour l'obtenir maintenant.</p>
+
+      <p>C'est un petit investissement comparé aux incroyables bénéfices que vous recevrez. C'est une décision qui pourrait avoir un impact énorme sur votre vie.</p>
+
+      <p>Alors n'attendez plus. C'est votre opportunité d'agir. Cliquez sur le bouton vert ci-dessous et assurez-vous d'obtenir <span class="hl">Protocole Prolong Power Premium</span> dès maintenant.</p>
+
+      <p>Rappelez-vous, des opportunités comme celle-ci ne se présentent pas tous les jours.</p>
+
+      <p>Vous méritez de vivre avec toute l'énergie et la confiance dont vous êtes capable.</p>
+
+      <p>Surprenez votre partenaire ce soir au lit.</p>
+
+      <p>Elle sera surprise et excitée par votre performance, comme une vraie star de cinéma.</p>
+
+      <p>Cliquez maintenant et faites ce pas décisif vers une version meilleure et plus puissante de vous-même.</p>
+
+      <p>À bientôt de l'autre côté !</p>
     </div>
 
-    <!-- Oferta Mundpay — aparece após 6:35 -->
-    <div id="offer-block">
-      <div class="offer-label">🔒 Offre exclusive — disponible maintenant</div>
-      <div data-mndpay-render="019a1287-f803-71df-af87-e3ac1ec10619"></div>
+    <div class="divider"></div>
 
-      <!-- Garantia -->
-      <div class="guarantee">
-        <p class="guarantee-title">🛡️ Garantie 30 jours — Risque zéro</p>
-        <p>Essayez pendant 30 jours complets. Si pour une raison quelconque vous n'êtes pas satisfait, nous vous remboursons 100 % de votre argent. Sans questions, sans complications.</p>
-      </div>
+    <!-- Product + Mundpay -->
+    <p class="section-title">Votre offre exclusive</p>
+
+    <div class="product-card">
+      <img class="product-img" src="img/1.jpeg" alt="Protocole Power Premium">
+      <p class="product-name">Protocole Power Premium</p>
+      <p class="price-old">Valeur réelle : <span>67,90 €</span></p>
+      <p class="price-new">35,00 €</p>
+      <p class="price-sub">⚡ Offre disponible uniquement ici</p>
+
+      <div data-mndpay-render="019a1287-f803-71df-af87-e3ac1ec10619"></div>
+    </div>
+
+    <!-- Guarantee -->
+    <div class="guarantee">
+      <p class="guarantee-title">🛡️ Garantie 30 jours — Risque zéro</p>
+      <p>Essayez pendant 30 jours complets. Si pour une raison quelconque vous n'êtes pas satisfait, nous vous remboursons 100 % de votre argent. Sans questions, sans complications.</p>
     </div>
 
   </div>
-
-  <script>
-    // 6 minutos e 35 segundos = 395 000 ms
-    setTimeout(function () {
-      var hint = document.getElementById('waiting-hint');
-      if (hint) hint.style.display = 'none';
-
-      var block = document.getElementById('offer-block');
-      block.classList.add('visible');
-      setTimeout(function () {
-        block.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 100);
-    }, 395000);
-  </script>
 
 </body>
 </html>
